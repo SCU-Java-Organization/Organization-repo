@@ -42,7 +42,7 @@
     <!--初始化时加载配置文件-->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:springmvc-config.xml</param-value>
+      <param-value>classpath:dispatcher-servlet.xml</param-value>
     </init-param>
 
     <!--表示容器在启动时立即加载Servlet-->

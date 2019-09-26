@@ -24,7 +24,6 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
-      <scope>test</scope>
     </dependency>
 
     <!-- aopalliance包是AOP联盟的API包，里面包含了针对面向切面的接口，使项目支持aop。 -->
@@ -218,6 +217,19 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.16</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>jsr250-api</artifactId>
+      <version>1.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>

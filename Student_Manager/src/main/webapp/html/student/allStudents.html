@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container theme-showcase" role="main">
+    <div class="page-header">
+        <h2>学生信息查询</h2>
+    </div>
+
+    <div>
+        <form class="form-inline">
+            <label>学号：</label>
+            <input id="keyvalue" value="2017141461144" autofocus="autofocus">
+            <input type="button" id="searchByNo" class="btn btn-primary" value="按学号查找">
+            <input type="button" id="searchStudents" class="btn btn-primary" value="获取所有学生">
+        </form>
+    </div>
+    <div class="" style="width:80%; height: 50%">
+        <table class="table table-striped" id="studentinfo"></table>
+    </div>
+    <hr>
+    <div>
+        <form class="form-inline">
+            <label>学号：</label>
+            <input id="no" value="" >
+            <label>姓名：</label>
+            <input id="name" value="" >
+            <label>性别：</label>
+            <input id="maleradio" type="radio" name="sex" value="男" >男
+            <input id="femaleradio" type="radio" name="sex" value="女">女
+            <input type="button" id="updateStudent" class="btn btn-primary" value="修改学生信息">
+        </form>
+    </div>
+
+    <br>    <br>    <br>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">&copy; Build by <a href="https://www.shaojiale.cn" target="_blank">shaojiale.cn Team</a>. 2018.</p>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" src="../../js/resources/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/student/getStudent.js"></script>
+</body>
+</html>
