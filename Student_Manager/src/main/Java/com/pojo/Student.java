@@ -8,7 +8,16 @@ public class Student {
     private String sex;
     private String major;
     private Integer roleID;
+    private Role role;
     private String stuNum;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;

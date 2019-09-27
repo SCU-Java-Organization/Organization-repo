@@ -14,10 +14,10 @@ public class TestMybatis {
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         StudentMapper mapper = (StudentMapper)applicationContext.getBean("studentMapper");
-        //List<Student> list = mapper.queryAll();
-        //for (Student s : list)
-        //    System.out.println(s);
-        Student student = mapper.queryByStuNum("2017141461144");
-        System.out.println(student);
+        List<Student> list = mapper.queryAll();
+        for (Student s : list)
+            System.out.println(s);
+        //Student student = mapper.queryByStuNum("2017141461144");
+        //System.out.println(student);
     }
 }

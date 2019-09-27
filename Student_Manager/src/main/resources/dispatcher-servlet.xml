@@ -45,5 +45,5 @@
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/html/" mapping="/html/**"/>
-    <mvc:resources location="/images/" mapping="/images/**"/>
+    <mvc:resources location="/uploadImg/" mapping="/images/**"/>
 </beans>

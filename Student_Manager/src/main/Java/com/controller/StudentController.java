@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.pojo.Student;
 import com.service.StudentService;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,16 +20,36 @@ public class StudentController {
     @RequestMapping("/getAllStudents.do")
     @ResponseBody
     public List<Student> getAllStudents (){
-        System.out.println("SpringMVC配置成功！");
-        List<Student> list = studentService.queryAll();
-        //html/allStudents.html
-        return list;
+        return studentService.queryAll();
     }
 
     @RequestMapping("/getStudentByStuNum.do")
     @ResponseBody
     public Student getStudentByStuNum(Student param){
-        Student student = studentService.queryByStuNum(param.getStuNum());
-        return student;
+        return studentService.queryByStuNum(param.getStuNum());
+    }
+
+    @RequestMapping("/deleteStudent.do")
+    @ResponseBody
+    public Integer deleteStudent(Student student){
+        return studentService.delete(student.getName());
+    }
+
+    @RequestMapping("/uploadImg.do")
+    @ResponseBody
+    public void uploadImg(Student student, MultipartFile img){
+
+    }
+
+    @RequestMapping("/addStudent.do")
+    @ResponseBody
+    public Integer addStudent(Student student){
+        return studentService.addStudent(student);
+    }
+
+    @RequestMapping("/updateStudent.do")
+    @ResponseBody
+    public Integer updateStudent(Student student){
+        return studentService.updateStudent(student);
     }
 }

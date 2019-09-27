@@ -2,11 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.StudentMapper">
-    <select id="queryAll" resultType="Student">
-        SELECT * FROM student
+    <select id="queryAll" resultMap="studentMap">
+        SELECT stu.name,
+        stu.institution,
+        stu.imgURL,
+        stu.sex,
+        stu.major,
+        stu.stuNum,
+        stu.imgURL,
+        r.id,
+        r.role
+        FROM student stu, role r
+        WHERE stu.roleID = r.id
     </select>
 
-    <select id="queryByStuNum" parameterType="String" resultType="Student">
-        SELECT * FROM student WHERE stuNum = #{stuNum}
+    <select id="queryByStuNum" parameterType="String" resultMap="studentMap">
+        SELECT stu.name,
+        stu.institution,
+        stu.imgURL,
+        stu.sex,
+        stu.major,
+        stu.stuNum,
+        stu.imgURL,
+        r.id,
+        r.role
+        FROM student stu, role r
+        WHERE stu.stuNum = #{stuNum} AND stu.roleID = r.id
     </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM student WHERE name = #{name}
+    </delete>
+
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO student(name,institution, sex, major, roleID, stuNum)
+        VALUES (#{name},#{institution},#{sex},#{major},#{roleID},#{stuNum})
+    </insert>
+
+    <update id="updateStudent" parameterType="Student">
+        UPDATE student SET name = #{name}, institution = #{institution}, sex = #{sex}, major = #{major}, roleID = #{roleID}
+        WHERE stuNum = #{stuNum}
+    </update>
+
+    <resultMap id="studentMap" type="Student">
+        <result column="name" property="name"/>
+        <result column="institution" property="institution"/>
+        <result column="imgURL" property="imgURL"/>
+        <result column="sex" property="sex"/>
+        <result column="major" property="major"/>
+        <result column="stuNum" property="stuNum"/>
+        <result column="imgURL" property="imgURL"/>
+        
+        <association property="role" javaType="Role">
+            <id column="id" property="id"/>
+            <result column="role" property="role"/>
+        </association>
+    </resultMap>
+
+
 </mapper>

@@ -20,4 +20,16 @@ public class StudentServiceImpl implements StudentService {
     public Student queryByStuNum(String stuNum){
         return mapper.queryByStuNum(stuNum);
     }
+
+    public Integer delete(String name){
+        return mapper.delete(name);
+    }
+
+    public Integer addStudent(Student student) {
+        return mapper.addStudent(student);
+    }
+
+    public Integer updateStudent(Student student) {
+        return mapper.updateStudent(student);
+    }
 }
