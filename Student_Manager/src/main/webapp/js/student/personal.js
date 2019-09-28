@@ -25,13 +25,6 @@
                     content += "</tr>";
                     //文本区域中显示学生信息
                     document.getElementById('studentinfo').innerHTML = content;
-                    showUpdateArea();
-                    //在修改信息form中显示信息
-                    $('#update-no').val(data.stuNum);
-                    $('#update-name').val(data.name);
-                    $('#update-institution').val(data.institution);
-                    $('#update-major').val(data.major);
-
                 }
                 else{
                     errorMsg += "<tr>";
@@ -80,10 +73,10 @@
 
     //更新学生信息
     function updateStudent() {
-        //trim() ：去掉前后空格
+        studentParam = {};
         studentParam.stuNum = $.trim($('#update-no').val());
         studentParam.name = $.trim($('#update-name').val());
-        studentParam.sex = $('input:radio[name="update-sex"]:checked').val();
+        studentParam.sex = $('#update-sex').val();
         studentParam.institution = $('#update-institution').val();
         studentParam.major = $('#update-major').val();
         var role = $('#update-role').val();
@@ -156,82 +149,19 @@
         });
     }
 
-    // 新增学生信息
-    function addStudent() {
-        studentParam.name = $('#insert-name').val();
-        studentParam.stuNum = $('#insert-no').val();
-        studentParam.sex = $('input:radio[name="insert-sex"]:checked').val();
-        studentParam.institution = $('#insert-institution').val();
-        studentParam.major = $('#insert-major').val();
-        var role = $('#insert-role').val();
-        var roleID = 0;
-        switch (role) {
-            case '普通会员':
-                roleID = 1;
-                break;
-            case '协会学员':
-                roleID = 2;
-                break;
-            case '403成员':
-                roleID = 3;
-                break;
-            case '208+成员':
-                roleID = 4;
-                break;
-            case '副会长':
-                roleID = 5;
-                break;
-            case '会长':
-                roleID = 6;
-                break;
-            case '指导老师':
-                roleID = 7;
-                break;
-        }
-        studentParam.roleID = roleID;
-        if(!checkData(studentParam)){
-            window.alert("请填写所有信息！");
-            return;
-        }
-        // ajax请求后台
-        $.ajax({
-            url: "addStudent.do",
-            type: "post",
-            data: studentParam,
-            success: function (data) {
-                console.log()
-                var content = '';
-                if (data != 0)
-                    content = '成功插入' + data + '条数据！';
-                else
-                    content = '插入失败！';
-                window.alert(content);
-            }
-        });
-    }
-
-    function checkData(studenParam) {
-        console.log("CHECK!");
-        return !(studenParam.name == null || studenParam.stuNum == null || studenParam.sex == null || studenParam.institution == null
-        || studenParam.major == null || studenParam.roleID == null);
+    function checkData(studentParam) {
+        console.log(studentParam);
+        console.log("CHECK! " + studentParam.institution == '');
+        return studentParam.name != ''
+            && studentParam.stuNum != ''
+            && studentParam.sex != ''
+            && studentParam.institution != ''
+            && studentParam.major != ''
+            && studentParam.roleID != '';
     }
 
     function showUpdateArea() {
-        document.getElementById("insert-area").style.display = "none";
-        document.getElementById("delete-area").style.display = "none";
         document.getElementById("update-area").style.display = "block";
-    }
-
-    function showDeleteArea() {
-        document.getElementById("insert-area").style.display = "none";
-        document.getElementById("update-area").style.display = "none";
-        document.getElementById("delete-area").style.display = "block";
-    }
-
-    function showInsertArea() {
-        document.getElementById("delete-area").style.display = "none";
-        document.getElementById("update-area").style.display = "none";
-        document.getElementById("insert-area").style.display = "block";
     }
 
     /** 页面onload事件 */
@@ -244,31 +174,10 @@
             searchStudents();
         });
 
-        $('#updateStudent').click(function () {
-            updateStudent();
-        });
-
         $('#update').click(function () {
             showUpdateArea();
-        })
-
-        $('#delete').click(function () {
-            showDeleteArea();
-        })
-
-        $('#insert').click(function () {
-            showInsertArea();
-        })
-
-        $('#deleteStudent').click(function () {
-            deleteStudent();
-        })
-
-        $('#insertStudent').click(function () {
-            addStudent();
-        })
+        });
     }
-
     //初始化  这一步不要少哦
     $(init);
 })(jQuery);

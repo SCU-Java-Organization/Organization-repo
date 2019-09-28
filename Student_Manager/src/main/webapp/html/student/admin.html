@@ -46,7 +46,9 @@
 <!--    </div>-->
     <hr>
     <div>
-        <h2>协会成员信息管理</h2>
+        <div class="page-header">
+            <h2>协会成员信息管理</h2>
+        </div>
         <button id="insert" type="button" class="btn btn-primary" style="width: 10%">新增</button>
         <button id="update" type="button" class="btn btn-primary"style="width: 10%">修改</button>
         <button id="delete" type="button" class="btn btn-primary"style="width: 10%">删除</button>
@@ -57,8 +59,10 @@
             <label>姓名：</label>
             <input id="insert-name" value="" >
             <label>性别：</label>
-            <input id="insert-maleradio" type="radio" name="insert-sex" value="男">男
-            <input id="insert-femaleradio" type="radio" name="insert-sex" value="女">女
+            <select id="insert-sex" class="form-control">
+                <option>男</option>
+                <option>女</option>
+            </select>
             <br>
             <label>学院：</label>
             <input id="insert-institution" value="" >
@@ -83,8 +87,10 @@
             <label>姓名：</label>
             <input id="update-name" value="" >
             <label>性别：</label>
-            <input id="update-maleradio" type="radio" name="update-sex" value="男">男
-            <input id="update-femaleradio" type="radio" name="update-sex" value="女">女
+            <select id="update-sex" class="form-control">
+                <option>男</option>
+                <option>女</option>
+            </select>
             <br>
             <label>学院：</label>
             <input id="update-institution" value="" >
@@ -117,6 +123,6 @@
     </footer>
 </div>
 <script type="text/javascript" src="../../js/resources/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/student/getStudent.js"></script>
+<script type="text/javascript" src="../../js/student/admin.js"></script>
 </body>
 </html>

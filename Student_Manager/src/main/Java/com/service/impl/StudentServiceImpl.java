@@ -32,4 +32,8 @@ public class StudentServiceImpl implements StudentService {
     public Integer updateStudent(Student student) {
         return mapper.updateStudent(student);
     }
+
+    public Integer checkExist(String stuNum) {
+        return mapper.checkExist(stuNum);
+    }
 }

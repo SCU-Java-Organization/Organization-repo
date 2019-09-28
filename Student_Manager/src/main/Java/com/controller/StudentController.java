@@ -44,6 +44,9 @@ public class StudentController {
     @RequestMapping("/addStudent.do")
     @ResponseBody
     public Integer addStudent(Student student){
+        int exist = studentService.checkExist(student.getStuNum());
+        if(exist > 0)
+            return -1;
         return studentService.addStudent(student);
     }
 

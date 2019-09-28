@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登 录</title>
+    <link rel="stylesheet" href="../../css/loginStyle.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+<body>
+<hgroup>
+    <h1>四川大学Java程序设计协会</h1>
+    <p class="text-muted">&copy; Build by <a href="https://www.shaojiale.cn" target="_blank">shaojiale.cn</a>. 2019.</p>
+</hgroup>
+
+<form>
+    <div class="group">
+        <h5>学号</h5>
+        <input id="signup-username" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+    <div class="group">
+        <h5>姓名</h5>
+        <input id="signup-name" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+    <div class="group">
+        <h5>性别</h5>
+        <select id="signup-sex" class="form-control">
+            <option>男</option>
+            <option>女</option>
+        </select>
+    </div>
+
+    <div class="group">
+        <h5>学院</h5>
+        <input id="signup-institution" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+    <div class="group">
+        <h5>专业</h5>
+        <input id="signup-major" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+    <div class="group">
+        <h5>角色</h5>
+        <select id="signup-role" class="form-control">
+            <option>普通会员</option>
+            <option>协会学员</option>
+            <option>403成员</option>
+            <option>208+成员</option>
+        </select>
+    </div>
+
+
+
+    <button id="signup" type="button" class="button buttonBlue">注 册
+        <div class="ripples buttonRipples">
+            <span class="ripplesCircle"></span>
+        </div>
+    </button>
+    <button id="toLogin" type="button" class="button buttonBlue">← 返 回
+        <div class="ripples buttonRipples">
+            <span class="ripplesCircle"></span>
+        </div>
+    </button>
+</form>
+
+<script src='../../js/resources/jquery.min.js'></script>
+<script src="../../js/login/layer.js"></script>
+<script src="../../js/login/login.js"></script>
+</body>
+</html>

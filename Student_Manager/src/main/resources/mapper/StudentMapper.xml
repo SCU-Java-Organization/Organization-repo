@@ -35,14 +35,19 @@
     </delete>
 
     <insert id="addStudent" parameterType="Student">
-        INSERT INTO student(name,institution, sex, major, roleID, stuNum)
-        VALUES (#{name},#{institution},#{sex},#{major},#{roleID},#{stuNum})
+        INSERT INTO student(name,institution, sex, major, roleID, stuNum, password)
+        VALUES (#{name},#{institution},#{sex},#{major},#{roleID},#{stuNum}, #{password})
     </insert>
 
     <update id="updateStudent" parameterType="Student">
         UPDATE student SET name = #{name}, institution = #{institution}, sex = #{sex}, major = #{major}, roleID = #{roleID}
         WHERE stuNum = #{stuNum}
     </update>
+
+
+    <select id="checkExist" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM student WHERE stuNum = #{stuNum}
+    </select>
 
     <resultMap id="studentMap" type="Student">
         <result column="name" property="name"/>

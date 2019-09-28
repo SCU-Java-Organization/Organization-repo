@@ -16,4 +16,6 @@ public interface StudentMapper {
     public Integer addStudent(Student student);
 
     public Integer updateStudent(Student student);
+
+    public Integer checkExist(String stuNum);
 }
