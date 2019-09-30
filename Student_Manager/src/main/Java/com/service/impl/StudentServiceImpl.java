@@ -36,4 +36,8 @@ public class StudentServiceImpl implements StudentService {
     public Integer checkExist(String stuNum) {
         return mapper.checkExist(stuNum);
     }
+
+    public Integer resetPassword(String oldPsw, String newPsw) {
+        return mapper.resetPassword(oldPsw, newPsw);
+    }
 }

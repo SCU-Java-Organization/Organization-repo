@@ -44,10 +44,13 @@
         WHERE stuNum = #{stuNum}
     </update>
 
-
     <select id="checkExist" parameterType="String" resultType="Integer">
         SELECT COUNT(*) FROM student WHERE stuNum = #{stuNum}
     </select>
+
+    <update id="resetPassword">
+        UPDATE student SET password = #{new} WHERE password = #{old}
+    </update>
 
     <resultMap id="studentMap" type="Student">
         <result column="name" property="name"/>

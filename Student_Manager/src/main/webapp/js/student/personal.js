@@ -187,6 +187,33 @@
         };
     }
 
+    // 更改密码
+    function resetPassword() {
+        var param = {};
+        param.oldPsw = $('#old-psw').val();
+        param.newPsw = $('#new-psw').val();
+        param.checkPsw = $('#new-psw-check').val();
+        if(param.newPsw != param.checkPsw){
+            window.alert("两次密码不一致！");
+            $('#new-psw').val('');
+            $('#new-psw-check').val('');
+            return;
+        }
+
+        // ajax请求后台
+        $.ajax({
+            url: "resetPassword.do",
+            type: "post",
+            data: param,
+            success: function (data) {
+                if (data > 0)
+                    window.alert(" 更新密码成功！");
+                else
+                    window.alert("更新密码失败，请核对原始密码！");
+            }
+        });
+    }
+
     // 课堂签到
     function attend() {
         var param = {};
@@ -209,13 +236,21 @@
     }
 
     function showUpdateArea() {
+        document.getElementById("reset-area").style.display = "none";
         document.getElementById("check-area").style.display = "none";
         document.getElementById("update-area").style.display = "block";
     }
 
     function showCheckArea(){
+        document.getElementById("reset-area").style.display = "none";
         document.getElementById("update-area").style.display = "none";
         document.getElementById("check-area").style.display = "block";
+    }
+
+    function showResetArea(){
+        document.getElementById("update-area").style.display = "none";
+        document.getElementById("check-area").style.display = "none";
+        document.getElementById("reset-area").style.display = "block";
     }
 
     $( function () {
@@ -266,8 +301,16 @@
             showCheckArea();
         });
 
+        $('#reset').click(function () {
+            showResetArea();
+        });
+
         $('#check-btn').click(function () {
             attend();
+        });
+
+        $('#reset-btn').click(function () {
+            resetPassword();
         });
     }
 

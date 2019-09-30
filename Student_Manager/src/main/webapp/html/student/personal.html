@@ -52,6 +52,7 @@
         </div>
         <button id="check" type="button" class="btn btn-primary"style="width: 10%">课堂签到</button>
         <button id="update" type="button" class="btn btn-primary"style="width: 10%">修改信息</button>
+        <button id="reset" type="button" class="btn btn-primary"style="width: 10%">设置密码</button>
         <button id="delete" type="button" class="btn btn-primary"style="width: 10%">退出协会</button>
 
         <form id="check-area" class="form-inline" style="display: none;margin-top: 2%;">
@@ -60,6 +61,16 @@
             <label>密码：</label>
             <input id="check-code" value="" >
             <input type="button" id="check-btn" class="btn btn-primary" value="确认签到">
+        </form>
+
+        <form id="reset-area" class="form-inline" style="display: none;margin-top: 2%;">
+            <label>原密码：</label>
+            <input id="old-psw" value="" >
+            <label>新密码：</label>
+            <input id="new-psw" value="" type="password">
+            <label>确认新密码：</label>
+            <input id="new-psw-check" value="" type="password">
+            <input type="button" id="reset-btn" class="btn btn-primary" value="确认修改">
         </form>
 
         <form id="update-area" class="form-inline" style="display: none;margin-top: 2%;">

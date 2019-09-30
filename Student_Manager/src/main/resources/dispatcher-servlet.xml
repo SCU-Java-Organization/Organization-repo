@@ -64,6 +64,7 @@
             <mvc:exclude-mapping path="/html/student/newSheet.do"/>
             <mvc:exclude-mapping path="/html/student/getAttendance.do"/>
             <mvc:exclude-mapping path="/html/student/attend.do"/>
+            <mvc:exclude-mapping path="/html/student/resetPassword.do"/>
             <bean class="com.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

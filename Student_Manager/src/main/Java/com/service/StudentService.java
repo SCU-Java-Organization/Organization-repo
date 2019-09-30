@@ -16,4 +16,6 @@ public interface StudentService {
     public Integer updateStudent(Student student);
 
     public Integer checkExist(String stuNum);
+
+    public Integer resetPassword(String oldPsw, String newPsw);
 }
