@@ -14,6 +14,7 @@
 <div class="container theme-showcase" role="main">
     <div class="page-header">
         <h2>欢迎来到你的主页</h2>
+        <h4><a id="myName"></a></h4>
     </div>
     <div>
         <form class="form-inline">
@@ -49,12 +50,21 @@
         <div class="page-header">
             <h2>个人信息管理</h2>
         </div>
+        <button id="check" type="button" class="btn btn-primary"style="width: 10%">课堂签到</button>
         <button id="update" type="button" class="btn btn-primary"style="width: 10%">修改信息</button>
         <button id="delete" type="button" class="btn btn-primary"style="width: 10%">退出协会</button>
 
+        <form id="check-area" class="form-inline" style="display: none;margin-top: 2%;">
+            <label>课名：</label>
+            <input id="check-name" value="" >
+            <label>密码：</label>
+            <input id="check-code" value="" >
+            <input type="button" id="check-btn" class="btn btn-primary" value="确认签到">
+        </form>
+
         <form id="update-area" class="form-inline" style="display: none;margin-top: 2%;">
             <label>学号：</label>
-            <input id="update-no" value="" >
+            <input id="update-no" value="" disabled="disabled" >
             <label>姓名：</label>
             <input id="update-name" value="" >
             <label>性别：</label>
@@ -90,5 +100,6 @@
 </div>
 <script type="text/javascript" src="../../js/resources/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/student/personal.js"></script>
+<script type="text/javascript" src="../../js/student/sheet.js"></script>
 </body>
 </html>

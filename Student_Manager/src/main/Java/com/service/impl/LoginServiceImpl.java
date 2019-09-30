@@ -14,8 +14,8 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     StudentMapper studentMapper;
 
-    public Student signIn(String username) {
-        return loginMapper.signIn(username);
+    public Student signIn(Student student) {
+        return loginMapper.signIn(student);
     }
 
     public Integer signUp(Student student){

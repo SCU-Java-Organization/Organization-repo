@@ -1,9 +1,12 @@
 (function ($) {
     //设置全局对象，方便后期更新比较
     var studentParam = {};
+    var STU_NUM = '';
+    var personalInfo = {};
 
     //根据学号查找学生
     function searchByNo() {
+        studentParam = {};
         studentParam.stuNum = $('#keyvalue').val();
         // ajax请求后台
         $.ajax({
@@ -74,7 +77,7 @@
     //更新学生信息
     function updateStudent() {
         studentParam = {};
-        studentParam.stuNum = $.trim($('#update-no').val());
+        studentParam.stuNum = personalInfo.stuNum;
         studentParam.name = $.trim($('#update-name').val());
         studentParam.sex = $('#update-sex').val();
         studentParam.institution = $('#update-institution').val();
@@ -127,26 +130,27 @@
 
     // 删除学生信息
     function deleteStudent() {
-        studentParam.name = $('#delete-name').val();
-        if(studentParam.name == null){
-            window.alert("输入不能为空！");
-            return;
+        studentParam = {};
+        studentParam.name = personalInfo.name;
+        if(confirm("退出协会后将删除你的个人信息（包括账号)，确定退出吗？")){
+            // ajax请求后台
+            $.ajax({
+                url: "deleteStudent.do",
+                type: "post",
+                data: studentParam,
+                success: function (data) {
+                    var content = '未知错误，请稍后重试！';
+                    if (data != 0)
+                        content = '您已退出协会！';
+                    window.alert(content);
+                    var url = window.location.href;
+                    url = url.split('?')[0];
+                    url = url.replace('/student/personal.html',
+                        '/login/login.html');
+                    window.location.href = url;
+                }
+            });
         }
-        // ajax请求后台
-        $.ajax({
-            url: "deleteStudent.do",
-            type: "post",
-            data: studentParam,
-            success: function (data) {
-                console.log()
-                var content = '';
-                if (data != 0)
-                    content = '成功删除' + data + '条数据！';
-                else
-                    content = '未查询到姓名为 ' + studentParam.name + ' 的成员！';
-                window.alert(content);
-            }
-        });
     }
 
     function checkData(studentParam) {
@@ -160,9 +164,81 @@
             && studentParam.roleID != '';
     }
 
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]); return null; // 返回参数值
+    }
+
+    function funcUrlDel(name){
+        var loca = window.location;
+        var baseUrl = loca.origin + loca.pathname + "?";
+        var query = loca.search.substr(1);
+        if (query.indexOf(name)>-1) {
+            var obj = {}
+            var arr = query.split("&");
+            for (var i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].split("=");
+                obj[arr[i][0]] = arr[i][1];
+            };
+            delete obj[name];
+            var url = baseUrl + JSON.stringify(obj).replace(/[\"\{\}]/g,"").replace(/\:/g,"=").replace(/\,/g,"&");
+            return url
+        };
+    }
+
+    // 课堂签到
+    function attend() {
+        var param = {};
+        param.stuNum = personalInfo.stuNum;
+        param.className = $('#check-name').val();
+        param.code = $('#check-code').val();
+        param.stuName = personalInfo.name;
+        // ajax请求后台
+        $.ajax({
+            url: "attend.do",
+            type: "post",
+            data: param,
+            success: function (data) {
+                if(data == 1)
+                    window.alert("签到成功！");
+                else
+                    window.alert("签到失败！");
+            }
+        });
+    }
+
     function showUpdateArea() {
+        document.getElementById("check-area").style.display = "none";
         document.getElementById("update-area").style.display = "block";
     }
+
+    function showCheckArea(){
+        document.getElementById("update-area").style.display = "none";
+        document.getElementById("check-area").style.display = "block";
+    }
+
+    $( function () {
+        STU_NUM = getUrlParam('stuNum');
+        studentParam.stuNum = STU_NUM;
+        $.ajax({
+            url: "getStudentByStuNum.do",
+            type: "post",
+            data: studentParam,
+            success: function (data) {
+                if (data.name != null) {
+                    personalInfo = data;
+                    $('#myName').text(personalInfo.name + '同学');
+                    $('#update-no').val( personalInfo.stuNum);
+                    $('#update-name').val( personalInfo.name);
+                    $('#update-sex').val( personalInfo.sex);
+                    $('#update-institution').val( personalInfo.institution);
+                    $('#update-major').val( personalInfo.major);
+                    $('#update-role').val( personalInfo.role.role);
+                }
+            }
+        });
+    })
 
     /** 页面onload事件 */
     function init() {
@@ -177,7 +253,24 @@
         $('#update').click(function () {
             showUpdateArea();
         });
+
+        $('#updateStudent').click(function () {
+            updateStudent();
+        });
+
+        $('#delete').click(function () {
+            deleteStudent();
+        });
+
+        $('#check').click(function () {
+            showCheckArea();
+        });
+
+        $('#check-btn').click(function () {
+            attend();
+        });
     }
+
     //初始化  这一步不要少哦
     $(init);
 })(jQuery);

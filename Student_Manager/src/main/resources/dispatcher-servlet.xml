@@ -46,4 +46,25 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/html/" mapping="/html/**"/>
     <mvc:resources location="/uploadImg/" mapping="/images/**"/>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/uploadImg/**"/>
+            <mvc:exclude-mapping path="/html/login/**"/>
+            <mvc:exclude-mapping path="/html/student/getAllStudents.do"/>
+            <mvc:exclude-mapping path="/html/student/getStudentByStuNum.do"/>
+            <mvc:exclude-mapping path="/html/student/deleteStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/uploadImg.do"/>
+            <mvc:exclude-mapping path="/html/student/addStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/updateStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/newSheet.do"/>
+            <mvc:exclude-mapping path="/html/student/getAttendance.do"/>
+            <mvc:exclude-mapping path="/html/student/attend.do"/>
+            <bean class="com.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

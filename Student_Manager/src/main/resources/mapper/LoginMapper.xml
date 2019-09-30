@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.LoginMapper">
-    <select id="signIn" parameterType="String" resultMap="studentMap">
+    <select id="signIn" parameterType="Student" resultMap="studentMap">
         SELECT stu.name,
         stu.institution,
         stu.imgURL,
@@ -14,7 +14,7 @@
         r.id,
         r.role
         FROM student stu, role r
-        WHERE stu.stuNum = #{stuNum} AND stu.roleID = r.id
+        WHERE stu.stuNum = #{stuNum} AND stu.password = #{password} AND stu.roleID = r.id
     </select>
 
     <resultMap id="studentMap" type="Student">

@@ -52,6 +52,8 @@
         <button id="insert" type="button" class="btn btn-primary" style="width: 10%">新增</button>
         <button id="update" type="button" class="btn btn-primary"style="width: 10%">修改</button>
         <button id="delete" type="button" class="btn btn-primary"style="width: 10%">删除</button>
+        <button id="check" type="button" class="btn btn-primary"style="width: 10%">开启签到</button>
+        <button id="check-info" type="button" class="btn btn-primary"style="width: 10%">签到情况</button>
 
         <form id="insert-area" class="form-inline" style="display: none;margin-top: 2%;">
             <label>学号：</label>
@@ -114,6 +116,37 @@
             <input id="delete-name" value="" >
             <input type="button" id="deleteStudent" class="btn btn-primary" value="删除学生信息">
         </form>
+
+        <form id="check-area" class="form-inline" style="display: none;margin-top: 2%;">
+            <label>课名：</label>
+            <input id="check-name" value="" >
+            <label>签到码：</label>
+            <input id="check-code" value="" >
+
+            <input type="button" id="open-check" class="btn btn-primary" value="开启">
+        </form>
+
+        <form id="check-info-area" class="form-inline" style="display: none;margin-top: 2%;">
+            <label>课名：</label>
+            <input id="check-info-name" value="" >
+
+            <input type="button" id="show-check-info" class="btn btn-primary" value="查看">
+
+            <div class="pre-scrollable" style="height: 300px;"style="display: flex">
+                <table class="table table-striped">
+                    <thead class="table table-striped" >
+                    <tr>
+                        <th>课名</th>
+                        <th>姓名</th>
+                        <th>学号</th>
+                        <th>日期</th>
+                    </tr>
+                    </thead>
+                    <tbody  id="attendanceinfo"></tbody>
+                </table>
+            </div>
+
+        </form>
     </div>
     <br>
     <footer class="footer">
@@ -124,5 +157,6 @@
 </div>
 <script type="text/javascript" src="../../js/resources/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/student/admin.js"></script>
+<script type="text/javascript" src="../../js/student/sheet.js"></script>
 </body>
 </html>

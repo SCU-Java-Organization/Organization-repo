@@ -227,21 +227,42 @@
     }
 
     function showUpdateArea() {
+        document.getElementById("check-area").style.display = "none";
         document.getElementById("insert-area").style.display = "none";
         document.getElementById("delete-area").style.display = "none";
         document.getElementById("update-area").style.display = "block";
     }
 
     function showDeleteArea() {
+        document.getElementById("check-info-area").style.display = "none";
+        document.getElementById("check-area").style.display = "none";
         document.getElementById("insert-area").style.display = "none";
         document.getElementById("update-area").style.display = "none";
         document.getElementById("delete-area").style.display = "block";
     }
 
     function showInsertArea() {
+        document.getElementById("check-info-area").style.display = "none";
+        document.getElementById("check-area").style.display = "none";
         document.getElementById("delete-area").style.display = "none";
         document.getElementById("update-area").style.display = "none";
         document.getElementById("insert-area").style.display = "block";
+    }
+
+    function showCheckArea() {
+        document.getElementById("check-info-area").style.display = "none";
+        document.getElementById("insert-area").style.display = "none";
+        document.getElementById("delete-area").style.display = "none";
+        document.getElementById("update-area").style.display = "none";
+        document.getElementById("check-area").style.display = "block";
+    }
+
+    function showCheckInfoArea() {
+        document.getElementById("insert-area").style.display = "none";
+        document.getElementById("delete-area").style.display = "none";
+        document.getElementById("update-area").style.display = "none";
+        document.getElementById("check-area").style.display = "none";
+        document.getElementById("check-info-area").style.display = "block";
     }
 
     /** 页面onload事件 */
@@ -268,6 +289,14 @@
 
         $('#insert').click(function () {
             showInsertArea();
+        })
+
+        $('#check').click(function () {
+            showCheckArea();
+        })
+
+        $('#check-info').click(function () {
+            showCheckInfoArea();
         })
 
         $('#deleteStudent').click(function () {
