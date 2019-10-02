@@ -13,4 +13,6 @@ public interface SheetService {
     public List<Attendance> getAttendanceByClass(String className);
 
     public String getCode(String className);
+
+    public Integer checkExist(String className, String stuNum);
 }

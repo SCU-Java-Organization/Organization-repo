@@ -20,4 +20,8 @@
     <select id="getAttendanceByClass" parameterType="String" resultType="Attendance">
         SELECT * FROM attendance WHERE className = #{className}
     </select>
+
+    <select id="checkExist" resultType="Integer">
+        SELECT COUNT(*) FROM attendance WHERE className = #{className} AND stuNum = #{stuNum}
+    </select>
 </mapper>

@@ -34,10 +34,8 @@
 
     //注册
     function signUp() {
-        // studentParam.stuNum = $('#keyvalue').val();
         signUpParam.stuNum =  $('#signup-username').val();
-        var num = signUpParam.stuNum;
-        signUpParam.password =  num.substring(num.length - 6, num.length);
+        signUpParam.password =  '123456';
         signUpParam.major = $('#signup-major').val();
         signUpParam.name = $('#signup-name').val();
         signUpParam.institution = $('#signup-institution').val();
@@ -74,7 +72,7 @@
             type: "post",
             data: signUpParam,
             success: function (data) {
-                if(data > 0){
+                if(data == 1){
                     window.alert('成功注册！');
                     var url = window.location.href;
                     url = url.replace('/signUp.html',
@@ -82,7 +80,7 @@
                     window.location.href = url;
                 }
                 else
-                    window.alert('注册失败！');
+                    window.alert("重新检查你的学号和姓名！");
             }
         });
     }
