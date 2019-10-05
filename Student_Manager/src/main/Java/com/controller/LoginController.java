@@ -58,7 +58,25 @@ public class LoginController {
     @RequestMapping("/signUp.do")
     @ResponseBody
     public Integer signUp(Student student){
-        return loginService.signUp(student);
+        char[] stuNum = student.getStuNum().toCharArray();
+        if(studentService.checkExist(student.getStuNum()) > 0)
+            return 2;
+
+        if(stuNum.length != 13)
+            return 3;
+
+        for (int i = 0; i < stuNum.length; i++){
+            if(stuNum[i] > '9' || stuNum[i] < '0'){
+                //System.out.println("出错在" + i + stuNum.indexOf(i));
+                return 4;
+            }
+        }
+
+        if(student.getName().length() > 5)
+            return 5;
+
+        loginService.signUp(student);
+        return 1;
     }
 
     @RequestMapping("/shiro.do")

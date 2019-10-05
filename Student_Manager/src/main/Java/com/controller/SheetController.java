@@ -38,6 +38,10 @@ public class SheetController {
     @RequestMapping("/attend.do")
     @ResponseBody
     public int attend(Attendance attendance){
+        if(sheetService.checkExist(attendance.getClassName(), attendance.getStuNum()) > 0){
+            System.out.println("FAIL!!!!!!!!!");
+            return 0;
+        }
         if(attendance.getCode().equals(sheetService.getCode(attendance.getClassName()))){
             attendance.setDate(new java.sql.Date(new Date().getTime()));
             sheetService.attend(attendance);

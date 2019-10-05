@@ -7,6 +7,9 @@ public class Sheet {
     private String code;
     private Date date;
 
+    public Sheet() {
+    }
+
     public String getClassName() {
         return className;
     }

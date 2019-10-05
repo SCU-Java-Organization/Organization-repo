@@ -29,4 +29,8 @@ public class SheetServiceImpl implements SheetService {
     public String getCode(String className) {
         return mapper.getCode(className);
     }
+
+    public Integer checkExist(String className, String stuNum) {
+        return mapper.checkExist(className,stuNum);
+    }
 }

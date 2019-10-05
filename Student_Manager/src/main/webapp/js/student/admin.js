@@ -21,7 +21,6 @@
                     content += "<td>" + data.institution + "</td>";
                     content += "<td>" + data.major + "</td>";
                     content += "<td>" + data.role.role + "</td>";
-                    content += "<td><img src='../../uploadImg/rick.jpg' style='width: 50px'/></td>"
                     content += "</tr>";
                     //文本区域中显示学生信息
                     document.getElementById('studentinfo').innerHTML = content;
@@ -62,7 +61,6 @@
                         content += "<td>" + data[i].institution + "</td>";
                         content += "<td>" + data[i].major + "</td>";
                         content += "<td>" + data[i].role.role + "</td>";
-                        content += "<td><img src='../../uploadImg/rick.jpg' style='width: 50px'/></td>"
                         content += "</tr>";
                     }
                     document.getElementById('studentinfo').innerHTML = content;
