@@ -3,6 +3,9 @@ package com.controller;
 import com.pojo.Student;
 import com.service.LoginService;
 import com.service.StudentService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,5 +59,28 @@ public class LoginController {
     @ResponseBody
     public Integer signUp(Student student){
         return loginService.signUp(student);
+    }
+
+    @RequestMapping("/shiro.do")
+    @ResponseBody
+    public String login(HttpServletRequest request){
+        // 获取输入的学号和密码
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Student stu = new Student();
+        stu.setStuNum(username);
+        stu.setPassword(password);
+
+        Subject currentUser = SecurityUtils.getSubject();
+        if(!currentUser.isAuthenticated()){
+            try{
+                UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+                currentUser.login(token);
+            } catch (Exception e){
+                return "fail!";
+            }
+
+        }
+        return "success!";
     }
 }

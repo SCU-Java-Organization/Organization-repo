@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.LoginMapper">
+    <select id="signIn" parameterType="Student" resultMap="studentMap">
+        SELECT stu.name,
+        stu.institution,
+        stu.imgURL,
+        stu.sex,
+        stu.major,
+        stu.stuNum,
+        stu.password,
+        stu.roleID,
+        r.id,
+        r.role
+        FROM student stu, role r
+        WHERE stu.stuNum = #{stuNum} AND stu.password = #{password} AND stu.roleID = r.id
+    </select>
+
+    <resultMap id="studentMap" type="Student">
+        <result column="name" property="name"/>
+        <result column="institution" property="institution"/>
+        <result column="imgURL" property="imgURL"/>
+        <result column="sex" property="sex"/>
+        <result column="major" property="major"/>
+        <result column="stuNum" property="stuNum"/>
+        <result column="imgURL" property="imgURL"/>
+        <result column="password" property="password"/>
+        <result column="roleID" property="roleID"/>
+
+        <association property="role" javaType="Role">
+            <id column="id" property="id"/>
+            <result column="role" property="role"/>
+        </association>
+    </resultMap>
+</mapper>

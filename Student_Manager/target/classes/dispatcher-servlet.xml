@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.controller"></context:component-scan>
+
+    <!--mvc静态资源放行，让你访问到图片-->
+    <mvc:default-servlet-handler/>
+
+    <!--mvc对注解支持-->
+    <context:annotation-config></context:annotation-config>
+    <mvc:annotation-driven/>
+
+    <!--扫描包路径-->
+    <context:component-scan base-package="com.controller"/>
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/html</value>
+        </property>
+
+        <property name="suffix">
+            <value>.html</value>
+        </property>
+    </bean>
+
+    <!--文件上传配置-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--最大值配置-->
+        <property name="maxUploadSize">
+            <value>200000</value>
+        </property>
+    </bean>
+
+    <!-- 静态资源映射-->
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/html/" mapping="/html/**"/>
+    <mvc:resources location="/uploadImg/" mapping="/images/**"/>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/uploadImg/**"/>
+            <mvc:exclude-mapping path="/html/login/**"/>
+            <mvc:exclude-mapping path="/html/student/getAllStudents.do"/>
+            <mvc:exclude-mapping path="/html/student/getStudentByStuNum.do"/>
+            <mvc:exclude-mapping path="/html/student/deleteStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/uploadImg.do"/>
+            <mvc:exclude-mapping path="/html/student/addStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/updateStudent.do"/>
+            <mvc:exclude-mapping path="/html/student/newSheet.do"/>
+            <mvc:exclude-mapping path="/html/student/getAttendance.do"/>
+            <mvc:exclude-mapping path="/html/student/attend.do"/>
+            <mvc:exclude-mapping path="/html/student/resetPassword.do"/>
+            <bean class="com.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
