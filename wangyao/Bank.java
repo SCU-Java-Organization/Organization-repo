@@ -1,45 +1,41 @@
 package com.company;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Bank {
 
-    private Person[] person = new Person[100];
-    public Person[] getPerson() {
+    private List<Person> person = new ArrayList<>();
+
+    public List<Person> getPerson() {
         return person;
     }
-
-    public void setPerson(Person[] person) {
-        this.person = person;
-    }
-
-    public void quqian(int j,int money){
-        int money1 = getPerson()[j].getMoney();
+    public void quqian(int j, int money){
+        int money1 = person.get(j).getMoney();
         money1 -= money;
-        getPerson()[j].setMoney(money1);
-        System.out.println(""+getPerson()[j].getName()+"的余额还剩"+money1);
+        person.get(j).setMoney(money1);
+        System.out.println(""+person.get(j).getName()+"的余额还剩"+money1);
     }
 
     public void cunqian(int j,int money){
-        int money1 = getPerson()[j].getMoney();
+        int money1 = person.get(j).getMoney();
         money1 += money;
-        getPerson()[j].setMoney(money1);
-        System.out.println(""+getPerson()[j].getName()+"的余额还剩"+money1);
+        person.get(j).setMoney(money1);
+        System.out.println(""+person.get(j).getName()+"的余额还剩"+money1);
     }
 
     public void transfer(int j,int j2,int money){
-        int money1 = getPerson()[j].getMoney();
+        int money1 = person.get(j).getMoney();
         money1 -= money;
-        getPerson()[j].setMoney(money1);
-        int money2 = getPerson()[j2].getMoney();
+        person.get(j).setMoney(money1);
+        int money2 = person.get(j2).getMoney();
         money2 += money;
-        getPerson()[j2].setMoney(money2);
-        System.out.println(""+getPerson()[j].getName()+"的余额还剩"+money1);
-        System.out.println(""+getPerson()[j2].getName()+"的余额还剩"+money2);
+        person.get(j2).setMoney(money2);
+        System.out.println(""+person.get(j).getName()+"的余额还剩"+money1);
+        System.out.println(""+person.get(j2).getName()+"的余额还剩"+money2);
     }
-    public int huanhao(String temp3){
-        for(int i = 0;i < getPerson().length;i++){
-            if(temp3.equals(getPerson()[i].getName())) {
+    public int huanhao(String temp){
+        for(int i = 0;i < person.size();i++){
+            if(temp.equals(person.get(i).getName())) {
                 return i;
             }
         }
