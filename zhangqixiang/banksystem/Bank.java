@@ -1,5 +1,3 @@
-package com.company;
-
 import com.company.Account;
 
 import java.io.File;

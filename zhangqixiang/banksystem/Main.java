@@ -1,5 +1,3 @@
-package com.company;
-
 import com.sun.net.httpserver.Authenticator;
 import com.sun.source.tree.NewArrayTree;
 import jdk.dynalink.beans.StaticClass;
