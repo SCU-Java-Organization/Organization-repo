@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Built-By: 邵嘉乐
-Created-By: IntelliJ IDEA
-Build-Jdk: 12.0.1
-
