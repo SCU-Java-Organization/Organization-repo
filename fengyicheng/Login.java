@@ -1,9 +1,36 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class Login extends JFrame {
     public Login() {
-
+        //关闭监听器
+        //程序结束后把信息重新写入文件
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                ObjectOutputStream oos= null;
+                try {
+                    oos = new ObjectOutputStream(new FileOutputStream("Xbank.txt"));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                try {
+                    oos.writeObject(Xbank.getXusers());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         setBounds(540, 250, 460, 320);
 
@@ -35,7 +62,6 @@ public class Login extends JFrame {
         JButton button3= new JButton("登陆");  //创建登陆按钮
 
         JTextField act = new JTextField();    //文本框
-        //act.setLocation(20,20);  没用??
         act.setBounds(50, 25, 200, 25);
         JPasswordField psw = new JPasswordField(200);   //密码框
         psw.setBounds(50, 95, 200, 25);
@@ -64,7 +90,7 @@ public class Login extends JFrame {
         button3.addActionListener(e -> {
             String Sact = act.getText();   //获取文本框中的账号
 
-            Xuser user = Xbank.getXusers(Sact);
+            Xuser user = Xbank.getXuser(Sact);
             if (user != null) {
                 char[] Cpsw = psw.getPassword();
                 String Spsw = new String(Cpsw);
@@ -83,4 +109,6 @@ public class Login extends JFrame {
 
         setVisible(true);  //可见
     }
+
+
 }

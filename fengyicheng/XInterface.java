@@ -34,7 +34,7 @@ public class XInterface extends JFrame {
         JButton button2 = new JButton("存  款");      //存款功能
         button2.setBounds(65, 190, 200, 40);
         button2.addActionListener(e -> {
-            double money = Double.valueOf(JOptionPane.showInputDialog("请输入取款金额："));
+            double money = Double.valueOf(JOptionPane.showInputDialog("请输入存款金额："));
             xuser.addMoney(money);
             JOptionPane.showMessageDialog(null, "存款成功！");
         });
@@ -44,20 +44,22 @@ public class XInterface extends JFrame {
         button3.setBounds(65, 260, 200, 40);
         button3.addActionListener(e -> {
             double money = Double.valueOf(JOptionPane.showInputDialog("请输入取款金额："));
-            if (money > xuser.getBalance())
-                JOptionPane.showMessageDialog(null, "余额不足！",
-                        "WARNING", JOptionPane.WARNING_MESSAGE);
-            else {
-                xuser.takeMoney(money);
-                JOptionPane.showMessageDialog(null, "取款成功！");
-            }
+            xuser.takeMoney(money);
         });
         panel2.add(button3);
 
         JButton button4 = new JButton("转  账");
         button4.setBounds(65, 330, 200, 40);
         button4.addActionListener(e -> {
-            String otherUser = (String) JOptionPane.showInputDialog("请输入对方的账号：");
+            String otherUser = JOptionPane.showInputDialog("请输入对方的账号：");
+            Xuser otheruser = Xbank.getXuser(otherUser);
+            if (otheruser != null) {
+                double money = Double.valueOf(JOptionPane.showInputDialog("输入转账金额"));
+                if (xuser.takeMoney(money))
+                    otheruser.addMoney(money);
+            } else {
+                JOptionPane.showMessageDialog(null, "用户不存在！");
+            }
         });
         panel2.add(button4);
 
