@@ -48,9 +48,6 @@ public class ConnectionPool implements Pool{
     // 每次扩容的扩容量
     private int expansion;
 
-    // 销毁锁，当进行销毁时，不允许再从连接池借出连接
-    private Lock destroyLock = new ReentrantLock();
-
     public ConnectionPool(DataSource dataSource, BlockingQueue<ConnectionInfo> blockingQueue) {
         this(dataSource, blockingQueue, 3);
     }
@@ -139,7 +136,6 @@ public class ConnectionPool implements Pool{
      */
     public ConnectionInfo getConnectionInfo() throws PoolDestroyException{
         if(!isDestroyed.get()){
-            destroyLock.lock();
             try {
                 ConnectionInfo connectionInfo = blockingQueue.poll();
                 // 连接池已空
@@ -178,11 +174,9 @@ public class ConnectionPool implements Pool{
                     }
                 }
                 return connectionInfo;
-            } catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
                 throw new RuntimeException(e);
-            } finally {
-                destroyLock.unlock();
             }
         }
         throw new PoolDestroyException("连接池已经被销毁");
