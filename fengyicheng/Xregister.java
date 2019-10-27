@@ -51,7 +51,7 @@ public class Xregister extends JFrame {
             String passwd2 = new String(psw2.getPassword());
 
             //先判断账户是否存在
-            Xuser xuser = Xbank.getXusers(userName);
+            Xuser xuser = Xbank.getXuser(userName);
             if (xuser != null)//如果查找到了账户
                 JOptionPane.showMessageDialog(null, "该账号已存在！");
             else {

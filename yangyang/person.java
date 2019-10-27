@@ -2,10 +2,43 @@ package bank;
 import java.util.Scanner;
 public class person {
     //成员变量
-    String name;
-    int account;
-    String password;
-    float money;
+    private String name;
+    private int account;
+    private String password;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAccount() {
+        return account;
+    }
+
+    public void setAccount(int account) {
+        this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public float getMoney() {
+        return money;
+    }
+
+    public void setMoney(float money) {
+        this.money = money;
+    }
+
+    private float money;
 
     //成员方法
     public void check(){
@@ -27,6 +60,12 @@ public class person {
             money = money - b;
             System.out.println("取钱成功！");
         }
+    }
+
+    public void trans(int a){
+
+        money=money+a;
+
     }
 
 }

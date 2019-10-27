@@ -1,6 +1,7 @@
-import java.util.Set;
+import javax.swing.*;
+import java.io.Serializable;
 
-public class Xuser {
+public class Xuser implements Serializable{
     private String userName;
     private String password;
     private double balance;
@@ -23,19 +24,27 @@ public class Xuser {
         return userName;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void addMoney(double money){
-        this.balance+=money;
+    public void addMoney(double money) {
+
+        this.balance += money;
     }
 
-    public void takeMoney(double money){
-        this.balance-=money;
+    public boolean takeMoney(double money) {
+        if(money>balance)
+        {
+            JOptionPane.showMessageDialog(null,"余额不足！");
+            return false;
+        }
+        else
+        {
+            this.balance -= money;
+            JOptionPane.showMessageDialog(null,"操作成功！");
+            return true;
+        }
+
     }
 }
