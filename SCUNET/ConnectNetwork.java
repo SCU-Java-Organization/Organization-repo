@@ -1,14 +1,19 @@
 package SCUNET;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * @author ShaoJiale
@@ -20,64 +25,184 @@ public class ConnectNetwork {
      * @function 利用Jsoup分析未登录时返回的HTML
      * @return 利用正则表达式提取的queryString参数
      */
-    private static String getLoginPath(){
-        String href = "";
+    private static String getLoginPath() throws IOException{
+        String href = null;
         try {
             Document document = Jsoup.connect("http://192.168.2.135").get();
+            if(document.title().equals("登录成功")){
+                System.err.println("你已经登录");
+                return "logged in";
+            }
             href = document.head().data();
             href = href.split("\\?")[1];
             href = href.split("\'")[0];
-            System.err.println(href);
         } catch (IOException e){
-            System.err.println("URL错误！");
-        } finally {
-            return href;
+            System.err.println("连接到URL失败，等待分配IP");
+            throw e;
         }
+        return href;
     }
 
     /**
      * @function 向目标地址进行post请求
      * @throws Exception
      */
-    private static void login() throws Exception{
+    private static void login() throws IOException{
         String url = "http://192.168.2.135/eportal/InterFace.do?method=login";
-        String href = getLoginPath();
-
-        Param param = new Param(href);
+        String href = "";
 
         /**
-         * 添加post参数
+         * @function 解析登录的必要参数queryString
+         * @Exception 解析失败时catch getLoginPath()中抛出的异常，再抛出到main函数中
          */
-        URIBuilder builder = new URIBuilder(url);
-        builder.addParameter("method", "login");
-        builder.addParameter("userId", param.getUserId());
-        builder.addParameter("password", param.getPassword());
-        builder.addParameter("service", param.getService());
-        builder.addParameter("queryString", param.getQueryString());
-        builder.addParameter("operatorPwd", param.getOperatorPwd());
-        builder.addParameter("operatorUserId", param.getOperatorUserId());
-        builder.addParameter("validcode", param.getValidcode());
-        builder.addParameter("passwordEncrypt", param.getPasswordEncrypt());
+        try {
+            href = getLoginPath();
+        } catch (IOException e){
+            System.err.println("Login catch exception");
+            throw e;
+        }
+        if (href.equals("logged in"))
+            return;
 
-        HttpPost httpPost = new HttpPost(builder.build());
+        Param param = new Param(href);
+        try {
+            /**
+             * @function 添加post参数
+             * @Exception 使用URIBuilder包装post请求可能产生异常，这里我们不作处理
+             */
+            URIBuilder builder = new URIBuilder(url);
+            builder.addParameter("method", "login");
+            builder.addParameter("userId", param.getUserId());
+            builder.addParameter("password", param.getPassword());
+            builder.addParameter("service", param.getService());
+            builder.addParameter("queryString", param.getQueryString());
+            builder.addParameter("operatorPwd", param.getOperatorPwd());
+            builder.addParameter("operatorUserId", param.getOperatorUserId());
+            builder.addParameter("validcode", param.getValidcode());
+            builder.addParameter("passwordEncrypt", param.getPasswordEncrypt());
 
-        System.err.println(httpPost.getRequestLine());
+            HttpPost httpPost = new HttpPost(builder.build());
+
+            /**
+             * @function 尝试通过HttpClient发送POST请求
+             * @Exception 发送请求可能产生异常，这里我们不作处理
+             */
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            CloseableHttpResponse response = null;
+            try {
+                response = httpClient.execute(httpPost);
+                HttpEntity responseEntity = response.getEntity();
+                if(responseEntity != null){
+                    JSONObject jsonObject = JSON.parseObject(EntityUtils.toString(responseEntity, "UTF-8"));
+                    String connectStatus = (String)jsonObject.get("result");
+                    if (connectStatus.equals("success"))
+                        System.err.println("登录成功");
+                    else {
+                        System.err.println("连接失败！");
+                        System.err.println(jsonObject.get("message"));
+                    }
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * @function 获取下线需要的POST参数
+     * @return userIndex
+     */
+    private static String getLogoutMsg(){
+        String url = "http://192.168.2.135/eportal/InterFace.do?method=getOnlineUserInfo";
+        HttpGet httpGet = new HttpGet(url);
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         CloseableHttpResponse response = null;
+
+        String message = "";
         try {
+            response = httpClient.execute(httpGet);
+            HttpEntity responseEntity = response.getEntity();
+            if(responseEntity != null){
+                JSONObject jsonObject = JSON.parseObject(EntityUtils.toString(responseEntity, "UTF-8"));
+                String result = (String) jsonObject.get("result");
+                message = (String) jsonObject.get("message");
+
+                if(result.equals("fail"))
+                    message = (String) jsonObject.get("message");
+
+                String userIndex = (String)jsonObject.get("userIndex");
+                if(userIndex != null)
+                    return userIndex;
+            }
+        } catch (Exception e){
+            System.err.println("下线失败");
+        }
+        throw new RuntimeException(message);
+    }
+
+    /**
+     * @function 登出
+     */
+    private static void logout(){
+        String url = "http://192.168.2.135/eportal/InterFace.do?method=logout";
+        try {
+            URIBuilder builder = new URIBuilder(url);
+            try {
+                builder.addParameter("userIndex", getLogoutMsg());
+            } catch (RuntimeException e){
+                System.err.println("logout catch runtime exception: " + e.getMessage());
+                return;
+            }
+
+            HttpPost httpPost = new HttpPost(builder.build());
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            CloseableHttpResponse response = null;
+
             response = httpClient.execute(httpPost);
             HttpEntity responseEntity = response.getEntity();
-            if (responseEntity != null)
-                System.err.println(response.getStatusLine());
+
+            if(responseEntity != null) {
+                JSONObject jsonObject = JSON.parseObject(EntityUtils.toString(responseEntity, "UTF-8"));
+                //System.out.println(jsonObject);
+                String logoutStatus = (String) jsonObject.get("message");
+                if (logoutStatus.equals("下线成功！"))
+                    System.err.println("下线成功！");
+                else {
+                    System.err.println("下线失败！");
+                    System.err.println(logoutStatus);
+                }
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args){
         // 登录成功会打印状态码为200
         // Fixme 未实现无限循环连接，大家有兴趣可以自己更改main函数
-       login();
+        System.out.println("***********************");
+        System.out.println("*    1.连接校园网     *");
+        System.out.println("*    2.断开校园网     *");
+        System.out.println("***********************");
+        Scanner in = new Scanner(System.in);
+        if (in.nextInt() == 1){
+            try {
+                login();
+            } catch (Exception e){
+                System.out.println("main catch exception");
+                e.printStackTrace();
+            }
+        }else {
+            try {
+                logout();
+            } catch (RuntimeException e){
+                System.out.println("下线失败");
+                //System.out.println(e.getMessage());
+            }
+        }
     }
 }
