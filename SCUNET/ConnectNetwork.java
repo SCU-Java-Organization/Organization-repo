@@ -13,6 +13,13 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,11 +28,12 @@ import java.util.Scanner;
  * @function 登录校园网
  */
 public class ConnectNetwork {
+    public static boolean loginStatus = false;
     /**
      * @function 利用Jsoup分析未登录时返回的HTML
      * @return 利用正则表达式提取的queryString参数
      */
-    private static String getLoginPath() throws IOException{
+    public static String getLoginPath() throws IOException{
         String href = null;
         try {
             Document document = Jsoup.connect("http://192.168.2.135").get();
@@ -40,6 +48,7 @@ public class ConnectNetwork {
             System.err.println("连接到URL失败，等待分配IP");
             throw e;
         }
+
         return href;
     }
 
@@ -47,7 +56,7 @@ public class ConnectNetwork {
      * @function 向目标地址进行post请求
      * @throws Exception
      */
-    private static void login() throws IOException{
+    public static void login() throws IOException{
         String url = "http://192.168.2.135/eportal/InterFace.do?method=login";
         String href = "";
 
@@ -61,9 +70,11 @@ public class ConnectNetwork {
             System.err.println("Login catch exception");
             throw e;
         }
-        if (href.equals("logged in"))
+        if (href.equals("logged in")) {
+            loginStatus = true;
             return;
-
+        }
+        System.out.println("连接URL成功...");
         Param param = new Param(href);
         try {
             /**
@@ -94,9 +105,11 @@ public class ConnectNetwork {
                 HttpEntity responseEntity = response.getEntity();
                 if(responseEntity != null){
                     JSONObject jsonObject = JSON.parseObject(EntityUtils.toString(responseEntity, "UTF-8"));
-                    String connectStatus = (String)jsonObject.get("result");
-                    if (connectStatus.equals("success"))
+                    String connectloginStatus = (String)jsonObject.get("result");
+                    if (connectloginStatus.equals("success")) {
                         System.err.println("登录成功");
+                        loginStatus = true;
+                    }
                     else {
                         System.err.println("连接失败！");
                         System.err.println(jsonObject.get("message"));
@@ -115,7 +128,7 @@ public class ConnectNetwork {
      * @function 获取下线需要的POST参数
      * @return userIndex
      */
-    private static String getLogoutMsg(){
+    public static String getLogoutMsg(){
         String url = "http://192.168.2.135/eportal/InterFace.do?method=getOnlineUserInfo";
         HttpGet httpGet = new HttpGet(url);
 
@@ -131,9 +144,9 @@ public class ConnectNetwork {
                 String result = (String) jsonObject.get("result");
                 message = (String) jsonObject.get("message");
 
-                if(result.equals("fail"))
+                if(result.equals("fail")) {
                     message = (String) jsonObject.get("message");
-
+                }
                 String userIndex = (String)jsonObject.get("userIndex");
                 if(userIndex != null)
                     return userIndex;
@@ -147,14 +160,14 @@ public class ConnectNetwork {
     /**
      * @function 登出
      */
-    private static void logout(){
+    public static void logout(){
         String url = "http://192.168.2.135/eportal/InterFace.do?method=logout";
         try {
             URIBuilder builder = new URIBuilder(url);
             try {
                 builder.addParameter("userIndex", getLogoutMsg());
             } catch (RuntimeException e){
-                System.err.println("logout catch runtime exception: " + e.getMessage());
+                System.err.println("logout catch runtime exception! " + e.getMessage());
                 return;
             }
 
@@ -169,8 +182,9 @@ public class ConnectNetwork {
                 JSONObject jsonObject = JSON.parseObject(EntityUtils.toString(responseEntity, "UTF-8"));
                 //System.out.println(jsonObject);
                 String logoutStatus = (String) jsonObject.get("message");
-                if (logoutStatus.equals("下线成功！"))
+                if (logoutStatus.equals("下线成功！")) {
                     System.err.println("下线成功！");
+                }
                 else {
                     System.err.println("下线失败！");
                     System.err.println(logoutStatus);
@@ -178,31 +192,6 @@ public class ConnectNetwork {
             }
         } catch (Exception e){
             e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args){
-        // 登录成功会打印状态码为200
-        // Fixme 未实现无限循环连接，大家有兴趣可以自己更改main函数
-        System.out.println("***********************");
-        System.out.println("*    1.连接校园网     *");
-        System.out.println("*    2.断开校园网     *");
-        System.out.println("***********************");
-        Scanner in = new Scanner(System.in);
-        if (in.nextInt() == 1){
-            try {
-                login();
-            } catch (Exception e){
-                System.out.println("main catch exception");
-                e.printStackTrace();
-            }
-        }else {
-            try {
-                logout();
-            } catch (RuntimeException e){
-                System.out.println("下线失败");
-                //System.out.println(e.getMessage());
-            }
         }
     }
 }

@@ -10,8 +10,8 @@ public class Param {
      * @Param userId:填写你的学号
      * @Param password:填写你的密码
      */
-    private final String userId = "";
-    private final String password = "";
+    private final String userId = "2017141461144";
+    private final String password = "s953188895";
     private final String service = "internet";
     private final String queryString;
     private final String operatorPwd = "";
