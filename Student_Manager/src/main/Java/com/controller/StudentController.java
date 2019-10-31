@@ -3,11 +3,13 @@ package com.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.pojo.Student;
 import com.service.StudentService;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -54,5 +56,11 @@ public class StudentController {
     @ResponseBody
     public Integer updateStudent(Student student){
         return studentService.updateStudent(student);
+    }
+
+    @RequestMapping("/resetPassword.do")
+    @ResponseBody
+    public Integer resetPassword(HttpServletRequest request){
+        return studentService.resetPassword(request.getParameter("oldPsw"), request.getParameter("newPsw"));
     }
 }

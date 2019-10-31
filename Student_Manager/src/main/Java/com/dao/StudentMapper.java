@@ -1,5 +1,6 @@
 package com.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import com.pojo.Student;
 
@@ -18,4 +19,6 @@ public interface StudentMapper {
     public Integer updateStudent(Student student);
 
     public Integer checkExist(String stuNum);
+
+    public Integer resetPassword(@Param("old") String oldPsw, @Param("new") String newPsw);
 }

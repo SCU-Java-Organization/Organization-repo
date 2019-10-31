@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoginMapper {
-    public Student signIn(String username);
+    public Student signIn(Student student);
 
     public Integer signUp(Student student);
 }
