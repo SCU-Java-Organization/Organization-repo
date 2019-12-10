@@ -1,9 +1,9 @@
 package org.litespring.beans;
 
 /**
+ * description: definition of bean
  * @author ShaoJiale
- * @date 2019/12/10
- * @description Bean 信息接口
+ * date 2019/12/10
  */
 public interface BeanDefinition {
     String getBeanClassName();

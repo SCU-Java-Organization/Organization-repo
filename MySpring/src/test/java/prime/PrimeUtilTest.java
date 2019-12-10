@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
+ * description: Test with JUnit
  * @author ShaoJiale
- * @date 2019/12/10
- * @description 使用JUnit编写测试代码
+ * date 2019/12/10
  */
 public class PrimeUtilTest {
     // 边界条件测试

@@ -1,9 +1,9 @@
 package org.litespring.util;
 
 /**
+ * description: Utils of getting a ClassLoader
  * @author ShaoJiale
- * @date 2019/12/10
- * @description 类加载器相关工具
+ * date 2019/12/10
  */
 public abstract class ClassUtils {
     public static ClassLoader getDefaultClassLoader(){

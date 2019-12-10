@@ -1,17 +1,22 @@
 package org.litespring.test.v1;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.litespring.beans.BeanCreationException;
 import org.litespring.beans.BeanDefinition;
+import org.litespring.beans.BeanDefinitionStoreException;
 import org.litespring.beans.factory.BeanFactory;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.service.v1.PetStoreService;
 
+import java.io.InputStream;
+
 import static org.junit.Assert.*;
 
 /**
+ * description: TDD
  * @author ShaoJiale
- * @date 2019/12/10
- * @description TDD测试驱动开发
+ * date 2019/12/10
  */
 public class BeanFactoryTest {
     @Test
@@ -26,6 +31,27 @@ public class BeanFactoryTest {
         PetStoreService petStore = (PetStoreService)factory.getBean("petStore");
         assertNotNull(petStore);
         assertEquals(petStore.getOwner(), "SJL");
-        System.out.println(petStore.getOwner());
+    }
+
+    @Test
+    public void testInvalidBean(){
+        BeanFactory factory = new DefaultBeanFactory("petStore-v1.xml");
+
+        try{
+            factory.getBean("invalidBean");
+        } catch (BeanCreationException e){
+            return;
+        }
+        fail("cannot catch BeanCreationException!");
+    }
+
+    @Test
+    public void testInvalidXML(){
+        try {
+            new DefaultBeanFactory("invalid.xml");
+        } catch (BeanDefinitionStoreException e){
+            return;
+        }
+        fail("cannot catch BeanDefinitionStoreException!");
     }
 }

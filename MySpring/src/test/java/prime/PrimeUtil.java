@@ -3,9 +3,9 @@ package prime;
 import java.util.Arrays;
 
 /**
+ * description: Create for testing JUnit
  * @author ShaoJiale
- * @date 2019/12/10
- * @description 测试JUnit使用
+ * date 2019/12/10
  */
 public class PrimeUtil {
     public static int[] getPrimes(int max){

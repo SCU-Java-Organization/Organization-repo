@@ -3,9 +3,9 @@ package org.litespring.beans.factory.support;
 import org.litespring.beans.BeanDefinition;
 
 /**
+ * description: A generic implementation of BeanDefinition
  * @author ShaoJiale
- * @date 2019/12/10
- * @description BeanDefinition 的通用实现类
+ * date 2019/12/10
  */
 public class GenericBeanDefinition implements BeanDefinition {
     private String id;
