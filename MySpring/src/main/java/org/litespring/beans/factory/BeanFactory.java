@@ -1,14 +1,13 @@
 package org.litespring.beans.factory;
 
-import org.litespring.beans.BeanDefinition;
-
 /**
- * description: Container of my Spring, define some behavior
+ * Description: Container of my Spring
+ * Define some behaviors of container.
+ *
+ * @see org.litespring.beans.factory.support.DefaultBeanFactory
  * @author ShaoJiale
  * date 2019/12/10
  */
 public interface BeanFactory {
-    BeanDefinition getBeanDefinition(String beanID);
-
     Object getBean(String beanID);
 }

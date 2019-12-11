@@ -1,7 +1,8 @@
-package org.litespring.service.v1;
+package org.litespring.service.version1;
 
 /**
- * description: Bean for test
+ * Description: Bean for test
+ *
  * @author ShaoJiale
  * date 2019/12/10
  */

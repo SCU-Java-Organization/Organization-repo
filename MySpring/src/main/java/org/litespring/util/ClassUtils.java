@@ -31,5 +31,4 @@ public abstract class ClassUtils {
         return loader;
     }
 
-
 }

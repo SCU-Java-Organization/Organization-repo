@@ -1,7 +1,10 @@
-package org.litespring.beans;
+package org.litespring.beans.factory.exception;
+
+import org.litespring.beans.BeansException;
 
 /**
- * description: Exception of creating a bean
+ * Description: Exception of creating a bean
+ *
  * @author ShaoJiale
  * date 2019/12/10
  */
