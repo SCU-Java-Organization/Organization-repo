@@ -34,7 +34,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     /**
      * Get bean definition from container
-     * @param beanID
+     * @param beanID bean id
      * @return BeanDefinition
      */
     @Override
@@ -44,7 +44,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     /**
      * Get instance of bean
-     * @param beanID
+     * @param beanID bean id
      * @return instance
      */
     @Override
