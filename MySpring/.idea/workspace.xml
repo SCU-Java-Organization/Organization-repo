@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10c73e4b-beca-460b-bd75-54ef7ab7c214" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanCreationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanDefinitionStoreException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeansException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MySpring.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/BeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/util/ClassUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/util/ClassUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/litespring/test/v1/BeanFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/v1/BeanFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/prime/PrimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/prime/PrimeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/prime/PrimeUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/prime/PrimeUtilTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/litespring/test/v1/BeanFactoryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="904">
-              <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
+            <state relative-caret-position="346">
+              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,15 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="63" column="40" lean-forward="true" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-              <folding>
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1007">
+              <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -72,14 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/BeansException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#181#182#0" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
-                <element signature="e#278#279#0" expanded="true" />
-                <element signature="e#301#302#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="266">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -89,10 +65,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
               <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-              <folding>
-                <element signature="e#492#493#0" expanded="true" />
-                <element signature="e#533#534#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,10 +111,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-530" />
-    <option name="width" value="1096" />
-    <option name="height" value="1896" />
+    <option name="x" value="-63" />
+    <option name="y" value="88" />
+    <option name="width" value="1713" />
+    <option name="height" value="922" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,15 +196,6 @@
               <item name="litespring" type="462c0819:PsiDirectoryNode" />
               <item name="v1" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MySpring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MySpring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="litespring" type="462c0819:PsiDirectoryNode" />
-              <item name="v1" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -247,7 +210,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/litespring" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../staticWeb" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -278,7 +241,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BeanFactoryTest.testInvalidXML">
+  <component name="RunManager" selected="JUnit.BeanFactoryTest">
+    <configuration name="BeanFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.litespring.test.v1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.litespring.test.v1" />
+      <option name="MAIN_CLASS_NAME" value="org.litespring.test.v1.BeanFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BeanFactoryTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MySpring" />
       <extension name="coverage">
@@ -343,29 +321,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PrimeUtilTest.testGetPrimes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MySpring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="prime.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="prime" />
-      <option name="MAIN_CLASS_NAME" value="prime.PrimeUtilTest" />
-      <option name="METHOD_NAME" value="testGetPrimes" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BeanFactoryTest" />
+        <item itemvalue="JUnit.BeanFactoryTest.testGetBean" />
         <item itemvalue="JUnit.BeanFactoryTest.testInvalidXML" />
         <item itemvalue="JUnit.BeanFactoryTest.test" />
         <item itemvalue="JUnit.BeanFactoryTest.testInvalidBean" />
-        <item itemvalue="JUnit.BeanFactoryTest.testGetBean" />
-        <item itemvalue="JUnit.PrimeUtilTest.testGetPrimes" />
       </list>
     </recent_temporary>
   </component>
@@ -380,29 +342,12 @@
       <option name="presentableId" value="Default" />
       <updated>1575973567964</updated>
       <workItem from="1575973571513" duration="9004000" />
-      <workItem from="1575984243739" duration="1992000" />
+      <workItem from="1575984243739" duration="2224000" />
+      <workItem from="1576043538999" duration="712000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 19h 26m 15s.xml">
-      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 21h 04m 44s.xml">
-      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 21h 06m 27s.xml">
-      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 21h 11m 40s.xml">
-      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 21h 11m 52s.xml">
-      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BeanFactoryTest_testInvalidBean - 2019.12.10 at 21h 45m 26s.xml">
-      <configuration name="BeanFactoryTest.testInvalidBean" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BeanFactoryTest_testInvalidBean - 2019.12.10 at 21h 45m 56s.xml">
       <configuration name="BeanFactoryTest.testInvalidBean" configurationId="JUnit" />
     </history-entry>
@@ -415,15 +360,33 @@
     <history-entry file="BeanFactoryTest_testInvalidXML - 2019.12.10 at 21h 52m 21s.xml">
       <configuration name="BeanFactoryTest.testInvalidXML" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BeanFactoryTest_testInvalidXML - 2019.12.10 at 21h 54m 40s.xml">
+      <configuration name="BeanFactoryTest.testInvalidXML" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanFactoryTest_test - 2019.12.10 at 21h 55m 18s.xml">
+      <configuration name="BeanFactoryTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanFactoryTest_test - 2019.12.10 at 21h 56m 45s.xml">
+      <configuration name="BeanFactoryTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanFactoryTest_testInvalidXML - 2019.12.10 at 21h 56m 51s.xml">
+      <configuration name="BeanFactoryTest.testInvalidXML" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanFactoryTest_testGetBean - 2019.12.10 at 22h 00m 16s.xml">
+      <configuration name="BeanFactoryTest.testGetBean" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanFactoryTest - 2019.12.10 at 22h 00m 22s.xml">
+      <configuration name="BeanFactoryTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10996000" />
+    <option name="totallyTimeSpent" value="11940000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-530" width="1096" height="1896" extended-state="6" />
+    <frame x="1913" y="-4" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33687258" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36216652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -432,13 +395,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295519" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3291714" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37589112" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3770279" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -456,6 +419,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/org/litespring/beans/factory/BeanFactory.java" />
@@ -532,17 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-          <folding>
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanCreationException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -552,19 +514,6 @@
             <element signature="e#257#258#0" expanded="true" />
             <element signature="e#628#629#0" expanded="true" />
             <element signature="e#664#665#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/BeansException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#301#302#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -585,11 +534,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/litespring/test/v1/BeanFactoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="904">
-          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
+        <state relative-caret-position="346">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -604,14 +560,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/BeansException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="63" column="40" lean-forward="true" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-          <folding>
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="266">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
         </state>
       </provider>
     </entry>
