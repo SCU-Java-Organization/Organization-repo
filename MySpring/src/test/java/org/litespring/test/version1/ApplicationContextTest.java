@@ -24,7 +24,7 @@ public class ApplicationContextTest {
 
     @Test
     public void testGetBeanFromFileSystemContext(){
-        ApplicationContext context = new FileSystemXmlApplicationContext("D:\\Spring\\petstore-v1.xml");
+        ApplicationContext context = new FileSystemXmlApplicationContext("src\\test\\resources\\petstore-v1.xml");
         PetStoreService petStore = (PetStoreService)context.getBean("petStore");
         Assert.assertNotNull(petStore);
     }

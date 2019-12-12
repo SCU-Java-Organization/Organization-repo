@@ -2,6 +2,11 @@ package org.litespring.util;
 
 /**
  * description: Utils of getting a ClassLoader
+ * We'll get a default class loader from this util, including:
+ * 1.ThreadContextClassLoader
+ * 2.ClassLoader of ClassUtils
+ * 3.SystemClassLoader -- bootstrap class loader
+ *
  * @author ShaoJiale
  * date 2019/12/10
  */

@@ -34,7 +34,7 @@ public class ResourceTest {
 
     @Test
     public void testFileSystemResource() throws Exception{
-        Resource resource = new FileSystemResource("D:\\Spring\\petstore-v1.xml");
+        Resource resource = new FileSystemResource("src\\test\\resources\\petstore-v1.xml");
 
         InputStream is = null;
 

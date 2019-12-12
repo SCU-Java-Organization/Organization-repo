@@ -2,7 +2,7 @@ package org.litespring.service.version1;
 
 /**
  * Description: Bean for test
- *
+ * @version 1
  * @author ShaoJiale
  * date 2019/12/10
  */

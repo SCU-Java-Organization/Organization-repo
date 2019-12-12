@@ -1,8 +1,16 @@
 package org.litespring.beans;
 
+import java.util.List;
+
 /**
  * Description: definition of bean
+ * We use this class to describe the bean tag, including:
+ * 1.bean id
+ * 2.bean class
+ * 3.bean property
+ * 4.bean scope
  *
+ * implementations below ↓
  * @see org.litespring.beans.factory.support.GenericBeanDefinition
  * @author ShaoJiale
  * date 2019/12/10
@@ -21,4 +29,6 @@ public interface BeanDefinition {
     void setScope(String scope);
 
     String getBeanClassName();
+
+    List<PropertyValue> getPropertyValues();
 }

@@ -51,7 +51,7 @@ public class BeanFactoryTest {
         // get another bean
         PetStoreService petStore1 = (PetStoreService)factory.getBean("petStore");
 
-        // is singleton ?
+        // is it really singleton ?
         assertTrue(petStore.equals(petStore1));
     }
 

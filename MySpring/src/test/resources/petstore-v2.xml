@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="petStore"
+          class="org.litespring.service.version2.PetStoreService">
+        <property name="accountDao" ref="accountDao"/>
+        <property name="itemDao" ref="itemDao"/>
+        <property name="owner" value="ShaoJiale"/>
+        <property name="version" value="2"/>
+    </bean>
+
+    <bean id="accountDao" class="org.litespring.dao.version2.AccountDao"/>
+    <bean id="itemDao" class="org.litespring.dao.version2.ItemDao"/>
+</beans>

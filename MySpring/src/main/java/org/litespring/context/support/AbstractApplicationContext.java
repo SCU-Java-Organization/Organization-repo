@@ -15,23 +15,27 @@ import org.litespring.util.ClassUtils;
  * date 2019/12/11
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
-    private DefaultBeanFactory factory = null;
+    private DefaultBeanFactory factory;
 
     private ClassLoader beanClassLoader;
+
+    public AbstractApplicationContext(String configFile) {
+        this(configFile, ClassUtils.getDefaultClassLoader());
+    }
 
     /**
      * Define a Resource by path and load definitions.
      * Also we can set a ClassLoader for the factory.
      * @see #getResourceByPath(String)
-     * @see #getBeanClassLoader()
      * @param configFile config file path
+     * @param cl a class loader
      */
-    public AbstractApplicationContext(String configFile) {
+    public AbstractApplicationContext(String configFile, ClassLoader cl) {
         factory = new DefaultBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         Resource resource = this.getResourceByPath(configFile);
         reader.loadBeanDefinitions(resource);
-        factory.setBeanClassLoader(this.getBeanClassLoader());
+        factory.setBeanClassLoader(cl);
     }
 
     public Object getBean(String beanID){
