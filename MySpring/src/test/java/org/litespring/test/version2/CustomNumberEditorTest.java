@@ -2,6 +2,7 @@ package org.litespring.test.version2;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.litespring.beans.propertyEditors.CustomNumberEditor;
 
 /**
  * Description: Test CustomNumberEditor
@@ -13,6 +14,7 @@ public class CustomNumberEditorTest {
     @Test
     public void testConvertString(){
         CustomNumberEditor editor = new CustomNumberEditor(Integer.class, true);
+
         editor.setAsText("3");
         Object value = editor.getValue();
         Assert.assertTrue(value instanceof Integer);

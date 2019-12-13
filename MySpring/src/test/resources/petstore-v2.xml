@@ -9,6 +9,7 @@
         <property name="itemDao" ref="itemDao"/>
         <property name="owner" value="ShaoJiale"/>
         <property name="version" value="2"/>
+
     </bean>
 
     <bean id="accountDao" class="org.litespring.dao.version2.AccountDao"/>

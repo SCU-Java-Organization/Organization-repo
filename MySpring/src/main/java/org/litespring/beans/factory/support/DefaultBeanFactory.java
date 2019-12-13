@@ -3,9 +3,8 @@ package org.litespring.beans.factory.support;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.factory.BeanDefinitionRegistry;
 import org.litespring.beans.factory.config.ConfigurableBeanFactory;
-import org.litespring.beans.factory.exception.BeanCreationException;
+import org.litespring.beans.factory.exception.*;
 import org.litespring.beans.BeanDefinition;
-import org.litespring.beans.factory.BeanFactory;
 import org.litespring.util.ClassUtils;
 
 import java.beans.BeanInfo;
@@ -17,8 +16,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Description: Default implementation of BeanFactory
- * This is a default bean-container of lite-spring
- * @see BeanFactory
+ * This is the default bean-container of lite-spring.
+ * Factory contains <beanID, BeanDefinition>, and the
+ * Registry contains <beanID, BeanInstance>
+ *
+ * @see DefaultSingletonBeanRegistry
  * @author ShaoJiale
  * date 2019/12/10
  */
@@ -82,6 +84,17 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         return createBean(bd);
     }
 
+    /**
+     * Create a instance of a bean when it does not exist
+     * We have to do 2 things:
+     * 1.create a instance
+     * 2.complete dependency injection
+     *
+     * @see #instantiateBean(BeanDefinition)
+     * @see #populateBean(BeanDefinition, Object)
+     * @param bd Bean definition
+     * @return A bean with dependency
+     */
     private Object createBean(BeanDefinition bd){
         // create instance
         Object bean = instantiateBean(bd);
@@ -111,25 +124,42 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
     }
 
+    /**
+     * Dependency injection
+     * We need to use resolver to achieve DI
+     * @param bd Bean definition
+     * @param bean Bean ready to be injected
+     * @see PropertyValue
+     * @see BeanDefinitionValueResolver
+     */
     protected void populateBean(BeanDefinition bd, Object bean) {
+        // get property value list
         List<PropertyValue> pvs = bd.getPropertyValues();
 
+        // no need to inject
         if(pvs == null || pvs.isEmpty())
             return;
 
+        // We need to
         BeanDefinitionValueResolver valueResolver = new BeanDefinitionValueResolver(this);
+        SimpleTypeConverter converter = new SimpleTypeConverter();
 
         try {
             for (PropertyValue pv : pvs){
                 String propertyName = pv.getName();
-                Object originalValue = pv.getValue();   // RuntimeBean or TypedString
-                Object resolvedValue = valueResolver.resolveValueIfNecessary(originalValue);
+                Object originalValue = pv.getValue();   // original value is a RuntimeBean or a TypedString
+                Object resolvedValue = valueResolver.resolveValueIfNecessary(originalValue); // actual value is a bean or a String
 
+                // use BeanInfo to inject bean or value
                 BeanInfo beanInfo = Introspector.getBeanInfo(bean.getClass());
+                // get descriptors of the current bean
                 PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
+
                 for(PropertyDescriptor pd : pds){
                     if(pd.getName().equals(propertyName)){
-                        pd.getWriteMethod().invoke(bean, resolvedValue);
+                        // read type of the current field and convert it
+                        Object convertValue = converter.convertIfNecessary(resolvedValue, pd.getPropertyType());
+                        pd.getWriteMethod().invoke(bean, convertValue);
                         break;
                     }
                 }

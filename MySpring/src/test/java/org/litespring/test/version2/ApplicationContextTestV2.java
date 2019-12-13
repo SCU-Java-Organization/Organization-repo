@@ -28,6 +28,6 @@ public class ApplicationContextTestV2 {
         Assert.assertTrue(petStore.getItemDao() instanceof ItemDao);
 
         Assert.assertEquals("ShaoJiale", petStore.getOwner());
-        Assert.assertEquals("2", petStore.getVersion());
+        Assert.assertEquals(2, petStore.getVersion());
     }
 }

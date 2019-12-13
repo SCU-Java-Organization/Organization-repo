@@ -2,7 +2,7 @@ package org.litespring.beans;
 
 /**
  * Description: Class of property tag
- * A property can be a bean or an object such as String
+ * A property can be a bean or a value
  *
  * @author ShaoJiale
  * date 2019/12/12

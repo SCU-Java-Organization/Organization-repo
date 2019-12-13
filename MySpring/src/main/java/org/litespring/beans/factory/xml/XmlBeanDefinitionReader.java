@@ -9,7 +9,7 @@ import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.factory.config.RuntimeBeanReference;
 import org.litespring.beans.factory.config.TypedStringValue;
-import org.litespring.beans.factory.exception.BeanDefinitionStoreException;
+import org.litespring.beans.factory.exception.*;
 import org.litespring.beans.factory.BeanDefinitionRegistry;
 import org.litespring.beans.factory.support.GenericBeanDefinition;
 import org.litespring.core.io.Resource;
@@ -135,11 +135,11 @@ public class XmlBeanDefinitionReader  {
      * Such as:
      * <bean id="xxx" class="xxx.xxx.xxx">
      *     <property name="xxx" ref="xxx"/>
-     *     <property name="xxx" ref="xxx"/>
      *     <property name="xxx" value="xxx"/>
      * </bean>
      * The property can be a bean or a String.
      *
+     * @see #parsePropertyValue(Element, String)
      * @param beanElem Element of the current bean tag
      * @param bd BeanDefinition of the current bean
      */
@@ -174,7 +174,10 @@ public class XmlBeanDefinitionReader  {
      *     <property name="xxx" ref="xxx"/>
      *     <property name="xxx" value="xxx"/>
      * </bean>
-     * The 'ref' tag is what we focus on.
+     *
+     * The 'ref' and 'value' tag is what we focus on.
+     * We cannot have both attributes at a same time,
+     * such as: <property name="xxx" ref="xxx" value="xxx"/>
      *
      * @param propertyElem the current property element
      * @param propertyName the current property name
@@ -194,7 +197,7 @@ public class XmlBeanDefinitionReader  {
         boolean hasRefAttribute = (propertyElem.attribute(REF_ATTRIBUTE) != null);
         boolean hasValueAttribute = (propertyElem.attribute(VALUE_ATTRIBUTE) != null);
 
-        // a property can have both attributes at a same time
+        // a property cannot have both attributes at a same time
         if(hasRefAttribute){
             String refName = propertyElem.attributeValue(REF_ATTRIBUTE);
             if(!StringUtils.hasText(refName))

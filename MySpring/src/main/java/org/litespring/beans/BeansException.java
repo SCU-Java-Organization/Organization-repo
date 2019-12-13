@@ -1,13 +1,9 @@
 package org.litespring.beans;
 
-import org.litespring.beans.factory.exception.BeanCreationException;
-import org.litespring.beans.factory.exception.BeanDefinitionStoreException;
-
 /**
  * Description: Base exception class
- *
- * @see BeanCreationException
- * @see BeanDefinitionStoreException
+ * Subclasses are in the package below.
+ * @see org.litespring.beans.factory.exception
  * @author ShaoJiale
  * date 2019/12/10
  */
