@@ -20,6 +20,7 @@ import java.util.Map;
  * date 2019/12/13
  */
 public class SimpleTypeConverter implements TypeConverter {
+
     private Map<Class<?>, PropertyEditor> defaultEditors;
 
     public SimpleTypeConverter() {

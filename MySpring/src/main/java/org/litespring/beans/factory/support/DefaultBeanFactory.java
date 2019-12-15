@@ -1,5 +1,6 @@
 package org.litespring.beans.factory.support;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.factory.BeanDefinitionRegistry;
 import org.litespring.beans.factory.config.ConfigurableBeanFactory;
@@ -140,7 +141,8 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         if(pvs == null || pvs.isEmpty())
             return;
 
-        // We need to
+        // We need to use resolver to judge if the property is a bean or String
+        // Then use the converter to convert String into Number
         BeanDefinitionValueResolver valueResolver = new BeanDefinitionValueResolver(this);
         SimpleTypeConverter converter = new SimpleTypeConverter();
 
@@ -166,6 +168,28 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             }
         } catch (Exception e){
             throw new BeanCreationException("Failed to obtain BeanInfo for class [" +
+                    bd.getBeanClassName() + "]");
+        }
+    }
+
+    public void populateBeanUseCommonBeanUtils(BeanDefinition bd, Object bean){
+        List<PropertyValue> pvs = bd.getPropertyValues();
+
+        if(pvs == null || pvs.isEmpty())
+            return;
+
+        BeanDefinitionValueResolver valueResolver = new BeanDefinitionValueResolver(this);
+
+        try {
+            for(PropertyValue pv : pvs){
+                String propertyName = pv.getName();
+                Object originalValue = pv.getValue();
+
+                Object resolvedValue = valueResolver.resolveValueIfNecessary(originalValue);
+                BeanUtils.setProperty(bean, propertyName, resolvedValue);
+            }
+        } catch (Exception e){
+            throw new BeanCreationException("Populate bean property failed for [" +
                     bd.getBeanClassName() + "]");
         }
     }

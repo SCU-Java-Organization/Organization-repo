@@ -18,6 +18,7 @@ import org.litespring.beans.factory.config.TypedStringValue;
  * date 2019/12/12
  */
 public class BeanDefinitionValueResolver {
+
     private final DefaultBeanFactory beanFactory;
 
     public BeanDefinitionValueResolver(DefaultBeanFactory beanFactory) {

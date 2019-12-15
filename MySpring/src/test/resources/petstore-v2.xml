@@ -5,6 +5,9 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="petStore"
           class="org.litespring.service.version2.PetStoreService">
+        <!--Pay attention to the 'name' attribute-->
+        <!--The 'name' must be the same as the name of variable you defined in the class-->
+        <!--Such as 'String owner;'-->
         <property name="accountDao" ref="accountDao"/>
         <property name="itemDao" ref="itemDao"/>
         <property name="owner" value="ShaoJiale"/>

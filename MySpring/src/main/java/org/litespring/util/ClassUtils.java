@@ -53,11 +53,24 @@ public abstract class ClassUtils {
         return loader;
     }
 
+    /**
+     * Judge if an object value belongs to the Class type
+     * @param type A Class represents a type
+     * @param value An Object
+     * @return true when the value belongs to the type
+     */
     public static boolean isAssignableValue(Class<?> type, Object value) {
         Assert.notNull(type, "Type must not be null");
         return value != null ? isAssignable(type, value.getClass()) : !type.isPrimitive();
     }
 
+    /**
+     * Judge if the 2 Classes are equal
+     * or there's a extend-relationship between them.
+     * @param leftType Class 1
+     * @param rightType Class 2
+     * @return true when Class1
+     */
     public static boolean isAssignable(Class<?> leftType, Class<?> rightType) {
         Assert.notNull(leftType, "Left side type must not be null");
         Assert.notNull(rightType, "right side type must not be null");
