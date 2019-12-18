@@ -51,7 +51,7 @@ public abstract class NumberUtils {
                     value = checkedLongValue(number, targetClass);
                     return (T) new Long(value);
                 } else if (BigInteger.class == targetClass) {
-                    return (T) (number instanceof BigDecimal ? ((BigDecimal)number).toBigInteger() : BigInteger.valueOf(number.longValue()));
+                    return (T) (number instanceof BigDecimal ? ((BigDecimal) number).toBigInteger() : BigInteger.valueOf(number.longValue()));
                 } else if (Float.class == targetClass) {
                     return (T) new Float(number.floatValue());
                 } else if (Double.class == targetClass) {
@@ -75,9 +75,9 @@ public abstract class NumberUtils {
     private static long checkedLongValue(Number number, Class<? extends Number> targetClass) {
         BigInteger bigInt = null;
         if (number instanceof BigInteger) {
-            bigInt = (BigInteger)number;
+            bigInt = (BigInteger) number;
         } else if (number instanceof BigDecimal) {
-            bigInt = ((BigDecimal)number).toBigInteger();
+            bigInt = ((BigDecimal) number).toBigInteger();
         }
 
         if (bigInt != null && (bigInt.compareTo(LONG_MIN) < 0 || bigInt.compareTo(LONG_MAX) > 0)) {
@@ -125,7 +125,7 @@ public abstract class NumberUtils {
             DecimalFormat decimalFormat = null;
             boolean resetBigDecimal = false;
             if (numberFormat instanceof DecimalFormat) {
-                decimalFormat = (DecimalFormat)numberFormat;
+                decimalFormat = (DecimalFormat) numberFormat;
                 if (BigDecimal.class == targetClass && !decimalFormat.isParseBigDecimal()) {
                     decimalFormat.setParseBigDecimal(true);
                     resetBigDecimal = true;

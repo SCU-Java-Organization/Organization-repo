@@ -12,19 +12,19 @@ import java.util.concurrent.ConcurrentHashMap;
  * Another container is the definition map in the factories, which contains
  * bean id and bean definition. And that's why we should use it in a factory.
  *
- * @see DefaultBeanFactory
  * @author ShaoJiale
  * date 2019/12/12
+ * @see DefaultBeanFactory
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
     private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(64);
 
     @Override
-    public void registerSingleton(String beanName, Object singletonObject){
+    public void registerSingleton(String beanName, Object singletonObject) {
         Assert.notNull(beanName, "'beanName' must not be null");
 
         Object oldObject = this.singletonObjects.get(beanName);
-        if(oldObject != null)
+        if (oldObject != null)
             throw new IllegalArgumentException("Could not register object [" + singletonObject +
                     "] with bean name of '" + beanName + "': there is already object [" + oldObject + "]");
 

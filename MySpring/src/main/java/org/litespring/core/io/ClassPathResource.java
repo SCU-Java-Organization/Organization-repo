@@ -8,17 +8,18 @@ import java.io.InputStream;
 /**
  * Description: Using this to package a resource file in
  * the class-path and get the InputStream of the resource.
- *
+ * <p>
  * If you want to package a resource with an exact path, use another:
- * @see FileSystemResource
+ *
  * @author ShaoJiale
  * date 2019/12/11
+ * @see FileSystemResource
  */
 public class ClassPathResource implements Resource {
     private String path;
     private ClassLoader classLoader;
 
-    public ClassPathResource(String path){
+    public ClassPathResource(String path) {
         this(path, null);
     }
 

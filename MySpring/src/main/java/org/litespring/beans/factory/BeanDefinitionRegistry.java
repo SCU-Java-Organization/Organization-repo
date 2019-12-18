@@ -5,10 +5,11 @@ import org.litespring.beans.factory.support.DefaultBeanFactory;
 
 /**
  * Description: Register bean definitions to bean-container (factory)
- * @see org.litespring.beans.factory.BeanFactory
- * @see DefaultBeanFactory
+ *
  * @author ShaoJiale
  * date 2019/12/11
+ * @see org.litespring.beans.factory.BeanFactory
+ * @see DefaultBeanFactory
  */
 public interface BeanDefinitionRegistry {
     BeanDefinition getBeanDefinition(String beanID);

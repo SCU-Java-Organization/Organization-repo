@@ -7,9 +7,9 @@ import java.beans.PropertyEditorSupport;
 /**
  * Description: Resolve String to Boolean
  *
- * @see CustomNumberEditor
  * @author ShaoJiale
  * date 2019/12/13
+ * @see CustomNumberEditor
  */
 public class CustomBooleanEditor extends PropertyEditorSupport {
     public static final String VALUE_TRUE = "true";
@@ -31,17 +31,17 @@ public class CustomBooleanEditor extends PropertyEditorSupport {
     }
 
     @Override
-    public void setAsText(String text) throws IllegalArgumentException{
+    public void setAsText(String text) throws IllegalArgumentException {
         String input = (text != null ? text.trim() : null);
 
         if (this.allowEmpty && !StringUtils.hasLength(input))
             setValue(null);
 
-        if ((VALUE_TRUE.equalsIgnoreCase(input)) || (VALUE_ON.equalsIgnoreCase(input))
-            || (VALUE_1.equalsIgnoreCase(input)) || (VALUE_YES.equalsIgnoreCase(input))) {
+        else if ((VALUE_TRUE.equalsIgnoreCase(input)) || (VALUE_ON.equalsIgnoreCase(input))
+                || (VALUE_1.equalsIgnoreCase(input)) || (VALUE_YES.equalsIgnoreCase(input))) {
             setValue(Boolean.TRUE);
         } else if ((VALUE_FALSE.equalsIgnoreCase(input)) || (VALUE_OFF.equalsIgnoreCase(input))
-            || (VALUE_0.equalsIgnoreCase(input)) || (VALUE_NO.equalsIgnoreCase(input))) {
+                || (VALUE_0.equalsIgnoreCase(input)) || (VALUE_NO.equalsIgnoreCase(input))) {
             setValue(Boolean.FALSE);
         } else {
             throw new IllegalArgumentException("Invalid boolean value [" + text + "]");
@@ -49,7 +49,7 @@ public class CustomBooleanEditor extends PropertyEditorSupport {
     }
 
     @Override
-    public String getAsText(){
+    public String getAsText() {
         if (Boolean.TRUE.equals(getValue()))
             return VALUE_TRUE;
         else if (Boolean.FALSE.equals(getValue()))

@@ -21,9 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * Factory contains <beanID, BeanDefinition>, and the
  * Registry contains <beanID, BeanInstance>
  *
- * @see DefaultSingletonBeanRegistry
  * @author ShaoJiale
  * date 2019/12/10
+ * @see DefaultSingletonBeanRegistry
  */
 public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         implements ConfigurableBeanFactory, BeanDefinitionRegistry {
@@ -45,6 +45,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     /**
      * Get bean definition from container
+     *
      * @param beanID bean id
      * @return BeanDefinition
      */
@@ -55,6 +56,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     /**
      * Get instance of bean
+     *
      * @param beanID bean id
      * @return instance
      * @see #createBean(BeanDefinition)
@@ -63,16 +65,16 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     public Object getBean(String beanID) {
         BeanDefinition bd = this.getBeanDefinition(beanID);
 
-        if(bd == null)
+        if (bd == null)
             throw new BeanCreationException("Bean Definition does not exist - ['" + beanID + "']");
 
         // if the bean is singleton
         // use double check lock to create bean
-        if(bd.isSingleton()){
+        if (bd.isSingleton()) {
             Object bean = this.getSingleton(beanID);
-            if(bean == null){
-                synchronized (singletonLock){
-                    if((bean = this.getSingleton(beanID)) == null){
+            if (bean == null) {
+                synchronized (singletonLock) {
+                    if ((bean = this.getSingleton(beanID)) == null) {
                         bean = createBean(bd);
                         this.registerSingleton(beanID, bean);
                     }
@@ -91,25 +93,25 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
      * 1.create a instance
      * 2.complete dependency injection
      *
-     * @see #instantiateBean(BeanDefinition)
-     * @see #populateBean(BeanDefinition, Object)
      * @param bd Bean definition
      * @return A bean with dependency
+     * @see #instantiateBean(BeanDefinition)
+     * @see #populateBean(BeanDefinition, Object)
      */
-    private Object createBean(BeanDefinition bd){
+    private Object createBean(BeanDefinition bd) {
         // create instance
         Object bean = instantiateBean(bd);
-        
+
         // set properties for the instance
         populateBean(bd, bean);
-        
+
         return bean;
     }
 
 
-
     /**
      * Create an instance of a specific bean
+     *
      * @param bd bean definition
      * @return instance of the bean
      */
@@ -120,7 +122,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         try {
             Class<?> clazz = loader.loadClass(beanClassName);
             return clazz.newInstance();
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new BeanCreationException(beanClassName, "create bean with name of " + beanClassName + " failed", e);
         }
     }
@@ -128,7 +130,8 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     /**
      * Dependency injection
      * We need to use resolver to achieve DI
-     * @param bd Bean definition
+     *
+     * @param bd   Bean definition
      * @param bean Bean ready to be injected
      * @see PropertyValue
      * @see BeanDefinitionValueResolver
@@ -138,7 +141,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         List<PropertyValue> pvs = bd.getPropertyValues();
 
         // no need to inject
-        if(pvs == null || pvs.isEmpty())
+        if (pvs == null || pvs.isEmpty())
             return;
 
         // We need to use resolver to judge if the property is a bean or String
@@ -147,7 +150,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         SimpleTypeConverter converter = new SimpleTypeConverter();
 
         try {
-            for (PropertyValue pv : pvs){
+            for (PropertyValue pv : pvs) {
                 String propertyName = pv.getName();
                 Object originalValue = pv.getValue();   // original value is a RuntimeBean or a TypedString
                 Object resolvedValue = valueResolver.resolveValueIfNecessary(originalValue); // actual value is a bean or a String
@@ -157,8 +160,8 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
                 // get descriptors of the current bean
                 PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
 
-                for(PropertyDescriptor pd : pds){
-                    if(pd.getName().equals(propertyName)){
+                for (PropertyDescriptor pd : pds) {
+                    if (pd.getName().equals(propertyName)) {
                         // read type of the current field and convert it
                         Object convertValue = converter.convertIfNecessary(resolvedValue, pd.getPropertyType());
                         pd.getWriteMethod().invoke(bean, convertValue);
@@ -166,29 +169,35 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
                     }
                 }
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new BeanCreationException("Failed to obtain BeanInfo for class [" +
                     bd.getBeanClassName() + "]");
         }
     }
 
-    public void populateBeanUseCommonBeanUtils(BeanDefinition bd, Object bean){
+    /**
+     * parse bean with common BeanUtils
+     *
+     * @param bd   bean definition
+     * @param bean bean waiting for DI
+     */
+    public void populateBeanUseCommonBeanUtils(BeanDefinition bd, Object bean) {
         List<PropertyValue> pvs = bd.getPropertyValues();
 
-        if(pvs == null || pvs.isEmpty())
+        if (pvs == null || pvs.isEmpty())
             return;
 
         BeanDefinitionValueResolver valueResolver = new BeanDefinitionValueResolver(this);
 
         try {
-            for(PropertyValue pv : pvs){
+            for (PropertyValue pv : pvs) {
                 String propertyName = pv.getName();
                 Object originalValue = pv.getValue();
 
                 Object resolvedValue = valueResolver.resolveValueIfNecessary(originalValue);
                 BeanUtils.setProperty(bean, propertyName, resolvedValue);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new BeanCreationException("Populate bean property failed for [" +
                     bd.getBeanClassName() + "]");
         }

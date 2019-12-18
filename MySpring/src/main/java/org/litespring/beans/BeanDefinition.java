@@ -9,11 +9,12 @@ import java.util.List;
  * 2.bean class
  * 3.bean property
  * 4.bean scope
- *
+ * <p>
  * implementations below ↓
- * @see org.litespring.beans.factory.support.GenericBeanDefinition
+ *
  * @author ShaoJiale
  * date 2019/12/10
+ * @see org.litespring.beans.factory.support.GenericBeanDefinition
  */
 public interface BeanDefinition {
     String SCOPE_SINGLETON = "singleton";

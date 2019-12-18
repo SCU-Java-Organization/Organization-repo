@@ -9,13 +9,14 @@ import org.litespring.beans.factory.BeanFactory;
  * default class loader for beans with hard coding. Such as:
  * this.classLoader = ClassUtils.getDefaultClassLoader();
  *
+ * @author ShaoJiale
+ * date 2019/12/12
  * @see org.litespring.util.ClassUtils
  * @see org.litespring.beans.factory.BeanFactory
  * @see org.litespring.context.ApplicationContext
- * @author ShaoJiale
- * date 2019/12/12
  */
 public interface ConfigurableBeanFactory extends BeanFactory {
     void setBeanClassLoader(ClassLoader beanClassLoader);
+
     ClassLoader getBeanClassLoader();
 }

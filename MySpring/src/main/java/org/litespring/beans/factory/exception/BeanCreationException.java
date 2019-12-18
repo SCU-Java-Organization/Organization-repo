@@ -11,7 +11,7 @@ import org.litespring.beans.BeansException;
 public class BeanCreationException extends BeansException {
     private String beanName;
 
-    public BeanCreationException(String msg){
+    public BeanCreationException(String msg) {
         super(msg);
     }
 
@@ -20,12 +20,12 @@ public class BeanCreationException extends BeansException {
         this.beanName = beanName;
     }
 
-    public BeanCreationException(String beanName, String msg, Throwable cause){
+    public BeanCreationException(String beanName, String msg, Throwable cause) {
         this(msg, beanName);
         initCause(cause);
     }
 
-    public String getBeanName(){
+    public String getBeanName() {
         return this.beanName;
     }
 }

@@ -33,7 +33,7 @@ public class PropertyValue {
         return this.converted;
     }
 
-    public synchronized void setConvertedValue(Object value){
+    public synchronized void setConvertedValue(Object value) {
         this.converted = true;
         this.convertedValue = value;
     }

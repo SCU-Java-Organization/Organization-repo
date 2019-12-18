@@ -8,9 +8,10 @@ import java.util.List;
 
 /**
  * Description: A generic implementation of BeanDefinition
- * @see BeanDefinition
+ *
  * @author ShaoJiale
  * date 2019/12/10
+ * @see BeanDefinition
  */
 public class GenericBeanDefinition implements BeanDefinition {
     private String id;
@@ -47,7 +48,7 @@ public class GenericBeanDefinition implements BeanDefinition {
     }
 
     @Override
-    public void setScope(String scope){
+    public void setScope(String scope) {
         this.scope = scope;
         this.singleton = SCOPE_SINGLETON.equals(scope) || SCOPE_DEFAULT.equals(scope);
         this.prototype = SCOPE_PROTOTYPE.equals(scope);

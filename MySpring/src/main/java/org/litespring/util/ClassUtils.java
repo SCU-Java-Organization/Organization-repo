@@ -28,24 +28,24 @@ public abstract class ClassUtils {
             primitiveTypeToWrapperMap.put(entry.getValue(), entry.getKey());
     }
 
-    public static ClassLoader getDefaultClassLoader(){
+    public static ClassLoader getDefaultClassLoader() {
         ClassLoader loader = null;
 
         try {
             loader = Thread.currentThread().getContextClassLoader();
-        } catch (Throwable ex){
+        } catch (Throwable ex) {
             // Cannot access thread context ClassLoader
         }
 
-        if(loader == null){
+        if (loader == null) {
             // No thread context ClassLoader, use ClassLoader of this class
             loader = ClassUtils.class.getClassLoader();
 
-            if(loader == null){
+            if (loader == null) {
                 // Returning null means we're using bootstrap ClassLoader
                 try {
                     loader = ClassLoader.getSystemClassLoader();
-                } catch (Throwable e){
+                } catch (Throwable e) {
                     // Cannot access system ClassLoader
                 }
             }
@@ -55,7 +55,8 @@ public abstract class ClassUtils {
 
     /**
      * Judge if an object value belongs to the Class type
-     * @param type A Class represents a type
+     *
+     * @param type  A Class represents a type
      * @param value An Object
      * @return true when the value belongs to the type
      */
@@ -67,7 +68,8 @@ public abstract class ClassUtils {
     /**
      * Judge if the 2 Classes are equal
      * or there's a extend-relationship between them.
-     * @param leftType Class 1
+     *
+     * @param leftType  Class 1
      * @param rightType Class 2
      * @return true when Class1
      */
@@ -79,14 +81,14 @@ public abstract class ClassUtils {
             return true;
         }
 
-        if (leftType.isPrimitive()){
+        if (leftType.isPrimitive()) {
             Class<?> resolvedPrimitive = wrapperToPrimitiveTypeMap.get(rightType);
-            if (resolvedPrimitive != null && leftType.equals(resolvedPrimitive)){
+            if (resolvedPrimitive != null && leftType.equals(resolvedPrimitive)) {
                 return true;
             }
         } else {
             Class<?> resolvedWrapper = primitiveTypeToWrapperMap.get(rightType);
-            if (resolvedWrapper != null && leftType.isAssignableFrom(resolvedWrapper)){
+            if (resolvedWrapper != null && leftType.isAssignableFrom(resolvedWrapper)) {
                 return true;
             }
         }

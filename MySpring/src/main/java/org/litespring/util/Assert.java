@@ -7,8 +7,8 @@ package org.litespring.util;
  * date 2019/12/11
  */
 public abstract class Assert {
-    public static void notNull(Object object, String message){
-        if(object == null)
+    public static void notNull(Object object, String message) {
+        if (object == null)
             throw new IllegalArgumentException(message);
     }
 }

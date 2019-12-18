@@ -6,10 +6,10 @@ package org.litespring.beans.factory.config;
  * such as <property name="enq" value="hello world"/>.
  * Another condition is about bean reference:
  *
- * @see RuntimeBeanReference
- * @see org.litespring.beans.PropertyValue
  * @author ShaoJiale
  * date 2019/12/12
+ * @see RuntimeBeanReference
+ * @see org.litespring.beans.PropertyValue
  */
 public class TypedStringValue {
     private String value;

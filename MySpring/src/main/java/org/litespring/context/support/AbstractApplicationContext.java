@@ -9,10 +9,11 @@ import org.litespring.util.ClassUtils;
 /**
  * Description: Simplify the design by extending this abstract class
  * Focus on the path of the XML config file.
- * @see ClassPathXmlApplicationContext
- * @see FileSystemXmlApplicationContext
+ *
  * @author ShaoJiale
  * date 2019/12/11
+ * @see ClassPathXmlApplicationContext
+ * @see FileSystemXmlApplicationContext
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
     private DefaultBeanFactory factory;
@@ -26,9 +27,10 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     /**
      * Define a Resource by path and load definitions.
      * Also we can set a ClassLoader for the factory.
-     * @see #getResourceByPath(String)
+     *
      * @param configFile config file path
-     * @param cl a class loader
+     * @param cl         a class loader
+     * @see #getResourceByPath(String)
      */
     public AbstractApplicationContext(String configFile, ClassLoader cl) {
         factory = new DefaultBeanFactory();
@@ -38,7 +40,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         factory.setBeanClassLoader(cl);
     }
 
-    public Object getBean(String beanID){
+    public Object getBean(String beanID) {
         return factory.getBean(beanID);
     }
 

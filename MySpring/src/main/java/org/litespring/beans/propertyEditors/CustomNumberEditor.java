@@ -10,14 +10,14 @@ import java.text.NumberFormat;
  * Description: An custom number editor for resolving String
  * Use this editor to resolve the Number value in 'property' tag,
  * in order to inject Number dependencies for beans.
- *
+ * <p>
  * We save wrapper data by extending PropertyEditorSupport and
  * override its methods...
  *
- * @see NumberUtils
- * @see CustomBooleanEditor
  * @author ShaoJiale
  * date 2019/12/13
+ * @see NumberUtils
+ * @see CustomBooleanEditor
  */
 public class CustomNumberEditor extends PropertyEditorSupport {
     private final Class<? extends Number> numberClass;
@@ -27,18 +27,18 @@ public class CustomNumberEditor extends PropertyEditorSupport {
     private final boolean allowEmpty;
 
     public CustomNumberEditor(Class<? extends Number> numberClass, boolean allowEmpty)
-            throws IllegalArgumentException{
+            throws IllegalArgumentException {
         this(numberClass, null, allowEmpty);
     }
 
     public CustomNumberEditor(Class<? extends Number> numberClass, NumberFormat numberFormat, boolean allowEmpty)
             throws IllegalArgumentException {
-       if (numberClass == null || !Number.class.isAssignableFrom(numberClass))
-           throw new IllegalArgumentException("Property class must be a subclass of Number");
+        if (numberClass == null || !Number.class.isAssignableFrom(numberClass))
+            throw new IllegalArgumentException("Property class must be a subclass of Number");
 
-       this.numberClass = numberClass;
-       this.numberFormat = numberFormat;
-       this.allowEmpty = allowEmpty;
+        this.numberClass = numberClass;
+        this.numberFormat = numberFormat;
+        this.allowEmpty = allowEmpty;
     }
 
     @Override
@@ -52,19 +52,19 @@ public class CustomNumberEditor extends PropertyEditorSupport {
     }
 
     @Override
-    public void setValue(Object value){
-        if(value instanceof Number)
-            super.setValue(NumberUtils.convertNumberToTargetClass((Number)value, this.numberClass));
+    public void setValue(Object value) {
+        if (value instanceof Number)
+            super.setValue(NumberUtils.convertNumberToTargetClass((Number) value, this.numberClass));
         else
             super.setValue(value);
     }
 
     @Override
-    public String getAsText(){
+    public String getAsText() {
         Object value = getValue();
-        if(value == null)
+        if (value == null)
             return "";
-        if(this.numberFormat != null)
+        if (this.numberFormat != null)
             return this.numberFormat.format(value);
         return value.toString();
     }

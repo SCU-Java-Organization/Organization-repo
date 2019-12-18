@@ -15,9 +15,9 @@ import java.util.Map;
  * This is different from the BeanDefinition resolver, which
  * is used for resolving RuntimeBeans or Strings.
  *
- * @see BeanDefinitionValueResolver
  * @author ShaoJiale
  * date 2019/12/13
+ * @see BeanDefinitionValueResolver
  */
 public class SimpleTypeConverter implements TypeConverter {
 
@@ -28,17 +28,17 @@ public class SimpleTypeConverter implements TypeConverter {
 
     @Override
     public <T> T convertIfNecessary(Object value, Class<T> requiredType) throws TypeMismatchException {
-        if (ClassUtils.isAssignableValue(requiredType, value)){         // the same type
+        if (ClassUtils.isAssignableValue(requiredType, value)) {         // the same type
             return (T) value;
         } else {
-            if(value instanceof String){                                // value is a String
+            if (value instanceof String) {                                // value is a String
                 PropertyEditor editor = findDefaultEditor(requiredType);
                 try {
-                    editor.setAsText((String)value);
-                } catch (IllegalArgumentException e){
+                    editor.setAsText((String) value);
+                } catch (IllegalArgumentException e) {
                     throw new TypeMismatchException(value, requiredType);
                 }
-                return (T)editor.getValue();
+                return (T) editor.getValue();
             }
             throw new RuntimeException("Todo: cannot convert value for " + value + " class" + requiredType);
         }

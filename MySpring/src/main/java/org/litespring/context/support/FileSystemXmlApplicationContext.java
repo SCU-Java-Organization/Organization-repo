@@ -9,10 +9,10 @@ import org.litespring.core.io.Resource;
  * @author ShaoJiale
  * date 2019/12/11
  */
-public class FileSystemXmlApplicationContext extends AbstractApplicationContext{
-   public FileSystemXmlApplicationContext(String path){
-       super(path);
-   }
+public class FileSystemXmlApplicationContext extends AbstractApplicationContext {
+    public FileSystemXmlApplicationContext(String path) {
+        super(path);
+    }
 
     @Override
     protected Resource getResourceByPath(String path) {

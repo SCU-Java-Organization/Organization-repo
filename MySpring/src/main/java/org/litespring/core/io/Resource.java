@@ -8,12 +8,13 @@ import java.io.InputStream;
  * 1.Class-path
  * 2.File-System-Path
  *
- * @see ClassPathResource
- * @see FileSystemResource
  * @author ShaoJiale
  * date 2019/12/11
+ * @see ClassPathResource
+ * @see FileSystemResource
  */
 public interface Resource {
     InputStream getInputStream() throws Exception;
+
     String getDescription();
 }

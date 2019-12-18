@@ -9,11 +9,12 @@ import java.io.InputStream;
 /**
  * Description: Using this to package a resource file in
  * the file-system and get the InputStream of the resource.
- *
+ * <p>
  * If you want to package a resource through class-path, use another:
- * @see ClassPathResource
+ *
  * @author ShaoJiale
  * date 2019/12/11
+ * @see ClassPathResource
  */
 public class FileSystemResource implements Resource {
     private final String path;

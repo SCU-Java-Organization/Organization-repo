@@ -5,15 +5,16 @@ import org.litespring.core.io.Resource;
 
 /**
  * Description: Get config file from class path
- *
+ * <p>
  * Another subclass of AbstractApplicationContext
- * @see FileSystemXmlApplicationContext
- * @see AbstractApplicationContext
+ *
  * @author ShaoJiale
  * date 2019/12/11
+ * @see FileSystemXmlApplicationContext
+ * @see AbstractApplicationContext
  */
-public class  ClassPathXmlApplicationContext extends AbstractApplicationContext {
-    public ClassPathXmlApplicationContext(String configFile){
+public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
+    public ClassPathXmlApplicationContext(String configFile) {
         super(configFile);
     }
 
