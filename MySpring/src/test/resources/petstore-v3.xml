@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="petStore"
+          class="org.litespring.service.version3.PetStoreService">
+        <!--Pay attention to the 'name' attribute-->
+        <!--The 'name' must be the same as the name of variable you defined in the class-->
+        <!--Such as 'String owner;'-->
+        <constructor-arg ref="accountDao"/>
+        <constructor-arg ref="itemDao"/>
+        <constructor-arg value="ShaoJiale"/>
+        <constructor-arg value="3"/>
+
+    </bean>
+
+    <bean id="accountDao" class="org.litespring.dao.version3.AccountDao"/>
+    <bean id="itemDao" class="org.litespring.dao.version3.ItemDao"/>
+</beans>

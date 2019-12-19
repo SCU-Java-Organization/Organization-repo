@@ -6,6 +6,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.litespring.beans.BeanDefinition;
+import org.litespring.beans.ConstructorArgument;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.factory.config.RuntimeBeanReference;
 import org.litespring.beans.factory.config.TypedStringValue;
@@ -45,6 +46,10 @@ public class XmlBeanDefinitionReader {
     public static final String VALUE_ATTRIBUTE = "value";
 
     public static final String NAME_ATTRIBUTE = "name";
+
+    public static final String CONSTRUCTOR_ARG_ELEMENT = "constructor-arg";
+
+    public static final String TYPE_ATTRIBUTE = "type";
 
     BeanDefinitionRegistry registry;
 
@@ -92,7 +97,7 @@ public class XmlBeanDefinitionReader {
     /**
      * Load bean definition with InputStream
      *
-     * @param is InputStream created by methods above
+     * @param is InputStream created by methods below
      * @see #loadBeanDefinitions(Resource)
      * @see #loadBeanDefinitions(String)
      */
@@ -114,10 +119,13 @@ public class XmlBeanDefinitionReader {
                     definition.setScope(elem.attributeValue(SCOPE_ATTRIBUTE));
                 }
 
-                // parse the property tag firstly
+                // parse constructor args firstly
+                parseConstructorArgElements(elem, definition);
+
+                // parse the property tag secondly
                 parsePropertyElement(elem, definition);
 
-                // load definition to registry secondly
+                // load definition to registry thirdly
                 this.registry.registerBeanDefinition(id, definition);
             }
         } catch (Exception e) {
@@ -131,6 +139,51 @@ public class XmlBeanDefinitionReader {
                 }
             }
         }
+    }
+
+    /**
+     * Parse the constructor-args elements.
+     * For each of the constructor-arg element,
+     * we use another method to parse it.
+     *
+     * @param beanEle current bean element
+     * @param bd      bean definition
+     * @see #parseConstructorArgElement(Element, BeanDefinition)
+     */
+    public void parseConstructorArgElements(Element beanEle, BeanDefinition bd) {
+        Iterator iter = beanEle.elementIterator(CONSTRUCTOR_ARG_ELEMENT);
+        while (iter.hasNext()) {
+            Element elem = (Element) iter.next();
+            parseConstructorArgElement(elem, bd);
+        }
+    }
+
+    /**
+     * Parse current constructor-arg element.
+     * Use this method to inject args into ConstructorArgument
+     * of the current BeanDefinition. Like we explained in class
+     * ConstructorArgument, we haven't supported the 'type' attribute
+     * or the 'name' attribute. But we still left them in this method
+     * because we may implement them in the future.
+     *
+     * @param elem current constructor-arg element
+     * @param bd   current bean definition
+     * @see ConstructorArgument
+     */
+    public void parseConstructorArgElement(Element elem, BeanDefinition bd) {
+        String typeAttr = elem.attributeValue(TYPE_ATTRIBUTE);
+        String nameAttr = elem.attributeValue(NAME_ATTRIBUTE);
+
+        Object value = parsePropertyValue(elem, null);
+
+        ConstructorArgument.ValueHolder valueHolder = new ConstructorArgument.ValueHolder(value);
+
+        if (StringUtils.hasLength(typeAttr))
+            valueHolder.setType(typeAttr);
+        if (StringUtils.hasLength(nameAttr))
+            valueHolder.setName(nameAttr);
+
+        bd.getConstructorArgument().addArgumentValue(valueHolder);
     }
 
     /**
