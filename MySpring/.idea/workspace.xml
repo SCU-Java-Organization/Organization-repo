@@ -2,30 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10c73e4b-beca-460b-bd75-54ef7ab7c214" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/ConstructorArgument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/ConstructorResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/dao/version3/AccountDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/dao/version3/ItemDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/service/version3/PetStoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version3/ApplicationContextTestV3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version3/BeanDefinitionTestV3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version3/ConstructorResolverTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/petstore-v3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/annotation/Autowired.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/annotation/AnnotationAttributes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/support/PackageResourceLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/AnnotationMetadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/ClassMetadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/ClassMetadataReadingVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/classreading/AnnotationAttributesReadingVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/classreading/AnnotationMetadataReadingVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/classreading/MetadataReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/type/classreading/SimpleMetadataReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/litespring/stereotype/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/asm.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/dao/version4/AccountDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/dao/version4/ItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/service/version4/PetStoreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version4/ApplicationContextTest4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version4/ClassReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version4/MetadataReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/litespring/test/version4/PackageResourceLoaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/petstore-v4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/BeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/BeanDefinitionValueResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/BeanDefinitionValueResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/support/GenericBeanDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/xml/XmlBeanDefinitionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/beans/factory/xml/XmlBeanDefinitionReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/prime/PrimeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/prime/PrimeUtilTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/litespring/beans/BeanDefinition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/litespring/beans/BeanDefinition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/litespring/beans/BeansException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/litespring/beans/BeansException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/litespring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/litespring/beans/factory/support/DefaultBeanFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/litespring/beans/factory/support/GenericBeanDefinition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/litespring/beans/factory/support/GenericBeanDefinition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/ClassPathResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/ClassPathResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/FileSystemResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/FileSystemResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/core/io/Resource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/litespring/util/ClassUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/litespring/util/ClassUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/litespring/util/ClassUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/litespring/util/ClassUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/prime/PrimeUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/prime/PrimeUtilTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +55,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -82,7 +86,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/litespring" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Prepare2019/JavaReview" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -94,58 +98,78 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\SJL\Projects\github\SCU\Organization-repo\MySpring\src\main\resources" />
+      <recent name="C:\SJL\Projects\github\SCU\Organization-repo\MySpring\src\main\java\org\litespring\core" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.litespring.core.type.classreading" />
+      <recent name="org.litespring.core.type" />
+      <recent name="org.litespring.core.annotation" />
+      <recent name="org.litespring.beans.factory.annotation" />
       <recent name="org.litespring.beans.factory.support" />
-      <recent name="org.litespring.beans" />
-      <recent name="org.litespring.beans.exception" />
-      <recent name="org.litespring.beans.propertyEditors" />
-      <recent name="org.litespring.util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.org.litespring.test in MySpring">
-    <configuration name="ApplicationContextTestV2.testGetBeanProperty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MetadataReaderTest.testGetMetadata">
+    <configuration name="ClassReaderTest.testGetAnnotation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MySpring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.litespring.test.version2.*" />
+          <option name="PATTERN" value="org.litespring.test.version4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.litespring.test.version2" />
-      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version2.ApplicationContextTestV2" />
-      <option name="METHOD_NAME" value="testGetBeanProperty" />
+      <option name="PACKAGE_NAME" value="org.litespring.test.version4" />
+      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version4.ClassReaderTest" />
+      <option name="METHOD_NAME" value="testGetAnnotation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApplicationContextTestV3.testGetBeanProperty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClassReaderTest.testGetClassMetaData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MySpring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.litespring.test.version3.*" />
+          <option name="PATTERN" value="org.litespring.test.version4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.litespring.test.version3" />
-      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version3.ApplicationContextTestV3" />
-      <option name="METHOD_NAME" value="testGetBeanProperty" />
+      <option name="PACKAGE_NAME" value="org.litespring.test.version4" />
+      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version4.ClassReaderTest" />
+      <option name="METHOD_NAME" value="testGetClassMetaData" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BeanDefinitionTestV3.testConstructorArgument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MetadataReaderTest.testGetMetadata" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MySpring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.litespring.test.version3.*" />
+          <option name="PATTERN" value="org.litespring.test.version4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.litespring.test.version3" />
-      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version3.BeanDefinitionTestV3" />
-      <option name="METHOD_NAME" value="testConstructorArgument" />
+      <option name="PACKAGE_NAME" value="org.litespring.test.version4" />
+      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version4.MetadataReaderTest" />
+      <option name="METHOD_NAME" value="testGetMetadata" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PackageResourceLoaderTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.litespring.test.version4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.litespring.test.version4" />
+      <option name="MAIN_CLASS_NAME" value="org.litespring.test.version4.PackageResourceLoaderTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,27 +189,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.litespring.test.version2 in MySpring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MySpring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.litespring.test.version2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.litespring.test.version2" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MetadataReaderTest.testGetMetadata" />
+        <item itemvalue="JUnit.ClassReaderTest.testGetAnnotation" />
+        <item itemvalue="JUnit.ClassReaderTest.testGetClassMetaData" />
         <item itemvalue="JUnit.org.litespring.test in MySpring" />
-        <item itemvalue="JUnit.BeanDefinitionTestV3.testConstructorArgument" />
-        <item itemvalue="JUnit.ApplicationContextTestV3.testGetBeanProperty" />
-        <item itemvalue="JUnit.org.litespring.test.version2 in MySpring" />
-        <item itemvalue="JUnit.ApplicationContextTestV2.testGetBeanProperty" />
+        <item itemvalue="JUnit.PackageResourceLoaderTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +234,12 @@
       <workItem from="1576235245509" duration="613000" />
       <workItem from="1576423066039" duration="2359000" />
       <workItem from="1576475841926" duration="666000" />
-      <workItem from="1576670774095" duration="15155000" />
+      <workItem from="1576670774095" duration="20427000" />
+      <workItem from="1576748226363" duration="608000" />
+      <workItem from="1576784010886" duration="6675000" />
+      <workItem from="1576921721941" duration="652000" />
+      <workItem from="1577105911995" duration="3033000" />
+      <workItem from="1577168788922" duration="5628000" />
     </task>
     <task id="LOCAL-00001" summary="little change">
       <created>1576046618078</created>
@@ -275,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576675169906</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="添加构造器注入的配置支持，但仅支持&lt;constructor-arg ref=&quot;&quot;&gt;语法">
+      <created>1576742712316</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576742712316</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +321,8 @@
     <MESSAGE value="新增对&lt;property&gt;标签中属性的转换功能，&#10;即将value值由String类型转换为Integer或Boolean&#10;优化了依赖注入" />
     <MESSAGE value="增加了一个基于BeanUtil的类型转换注入方法&#10;添加了部分注解" />
     <MESSAGE value="重新格式化代码，规范代码风格" />
-    <option name="LAST_COMMIT_MESSAGE" value="重新格式化代码，规范代码风格" />
+    <MESSAGE value="添加构造器注入的配置支持，但仅支持&lt;constructor-arg ref=&quot;&quot;&gt;语法" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加构造器注入的配置支持，但仅支持&lt;constructor-arg ref=&quot;&quot;&gt;语法" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2190" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1576209720899">
@@ -310,10 +333,14 @@
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="2012" y="-430" width="896" height="1696" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576222402935" />
-    <state x="2265" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1576741182620">
+    <state x="2265" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1577173507606">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state x="2265" y="134" key="#com.intellij.ide.util.MemberChooser/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576741182620" />
+    <state x="2265" y="134" key="#com.intellij.ide.util.MemberChooser/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577173507606" />
+    <state x="2287" y="278" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1576786328628">
+      <screen x="1920" y="-522" width="1080" height="1870" />
+    </state>
+    <state x="2287" y="278" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576786328628" />
     <state x="449" y="139" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576206016970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -322,51 +349,79 @@
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="1979" y="343" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576216341559" />
-    <state x="2019" y="-9" key="CommitChangelistDialog2" timestamp="1576742636010">
+    <state x="2019" y="-9" key="CommitChangelistDialog2" timestamp="1577174475036">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="141" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1576424801044" />
-    <state x="2019" y="-9" key="CommitChangelistDialog2/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576742636010" />
-    <state x="455" y="306" key="FileChooserDialogImpl" timestamp="1576475857294">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2019" y="-9" key="CommitChangelistDialog2/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174475036" />
+    <state x="2211" y="282" key="DetectedRootsChooserDialog" timestamp="1576786308098">
+      <screen x="1920" y="-522" width="1080" height="1870" />
+    </state>
+    <state x="2211" y="282" key="DetectedRootsChooserDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576786308098" />
+    <state x="2240" y="173" key="FileChooserDialogImpl" timestamp="1577168797071">
+      <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="455" y="306" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1576475857294" />
-    <state x="2240" y="173" key="FileChooserDialogImpl/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576235257698" />
-    <state width="1037" height="784" key="GridCell.Tab.0.bottom" timestamp="1576741260351">
+    <state x="2240" y="173" key="FileChooserDialogImpl/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577168797071" />
+    <state width="1037" height="521" key="GridCell.Tab.0.bottom" timestamp="1577174226441">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state width="1037" height="784" key="GridCell.Tab.0.bottom/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576741260351" />
-    <state width="1037" height="784" key="GridCell.Tab.0.center" timestamp="1576741260348">
+    <state width="1493" height="666" key="GridCell.Tab.0.bottom/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576745970570" />
+    <state width="1037" height="521" key="GridCell.Tab.0.bottom/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174226441" />
+    <state width="1037" height="521" key="GridCell.Tab.0.center" timestamp="1577174226440">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state width="1037" height="784" key="GridCell.Tab.0.center/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576741260348" />
-    <state width="1037" height="784" key="GridCell.Tab.0.left" timestamp="1576741260346">
+    <state width="1493" height="666" key="GridCell.Tab.0.center/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576745970570" />
+    <state width="1037" height="521" key="GridCell.Tab.0.center/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174226440" />
+    <state width="1037" height="521" key="GridCell.Tab.0.left" timestamp="1577174226440">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state width="1037" height="784" key="GridCell.Tab.0.left/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576741260346" />
-    <state width="1037" height="784" key="GridCell.Tab.0.right" timestamp="1576741260350">
+    <state width="1493" height="666" key="GridCell.Tab.0.left/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576745970569" />
+    <state width="1037" height="521" key="GridCell.Tab.0.left/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174226440" />
+    <state width="1037" height="521" key="GridCell.Tab.0.right" timestamp="1577174226441">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state width="1037" height="784" key="GridCell.Tab.0.right/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576741260350" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1576424239640">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="666" key="GridCell.Tab.0.right/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576745970570" />
+    <state width="1037" height="521" key="GridCell.Tab.0.right/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174226441" />
+    <state x="1937" y="142" key="SettingsEditor" timestamp="1577107153869">
+      <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1576424239640" />
     <state x="249" y="0" key="SettingsEditor/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576206166447" />
-    <state x="2052" y="151" key="Vcs.Push.Dialog.v2" timestamp="1576675179205">
+    <state x="1937" y="142" key="SettingsEditor/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577107153869" />
+    <state x="2052" y="151" key="Vcs.Push.Dialog.v2" timestamp="1576742717624">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="188" y="291" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1576424808101" />
-    <state x="2052" y="151" key="Vcs.Push.Dialog.v2/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576675179205" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1576475841308">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2052" y="151" key="Vcs.Push.Dialog.v2/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576742717624" />
+    <state x="2236" y="14" key="com.intellij.ide.util.TipDialog" timestamp="1577168788513">
+      <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1920.0.1280.680@0.0.1536.824" timestamp="1576475841308" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@0.0.1536.824" timestamp="1576206040678" />
-    <state x="2236" y="14" key="com.intellij.ide.util.TipDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576235245448" />
-    <state x="2116" y="189" key="run.anything.popup" timestamp="1576209898073">
+    <state x="2236" y="14" key="com.intellij.ide.util.TipDialog/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577168788513" />
+    <state x="1920" y="28" key="new project wizard" timestamp="1576786518662">
       <screen x="1920" y="-522" width="1080" height="1870" />
     </state>
-    <state x="2116" y="189" key="run.anything.popup/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576209898073" />
+    <state x="1920" y="28" key="new project wizard/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1576786518662" />
+    <state x="2116" y="189" key="run.anything.popup" timestamp="1577174360523">
+      <screen x="1920" y="-522" width="1080" height="1870" />
+    </state>
+    <state x="2116" y="189" key="run.anything.popup/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577174360523" />
+    <state x="2123" y="-87" width="672" height="678" key="search.everywhere.popup" timestamp="1577173518884">
+      <screen x="1920" y="-522" width="1080" height="1870" />
+    </state>
+    <state x="2123" y="-87" width="672" height="678" key="search.everywhere.popup/1920.-522.1080.1870/0.0.1536.824/-1920.470.1280.680@1920.-522.1080.1870" timestamp="1577173518884" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/litespring/core/annotation/AnnotationAttributes.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

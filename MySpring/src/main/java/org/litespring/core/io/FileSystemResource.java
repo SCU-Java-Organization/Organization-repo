@@ -4,6 +4,7 @@ import org.litespring.util.Assert;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -26,8 +27,13 @@ public class FileSystemResource implements Resource {
         this.path = path;
     }
 
+    public FileSystemResource(File file) {
+        this.path = file.getPath();
+        this.file = file;
+    }
+
     @Override
-    public InputStream getInputStream() throws Exception {
+    public InputStream getInputStream() throws IOException {
         return new FileInputStream(this.file);
     }
 
