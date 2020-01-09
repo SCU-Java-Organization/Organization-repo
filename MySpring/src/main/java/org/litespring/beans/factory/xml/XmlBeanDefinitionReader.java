@@ -13,6 +13,7 @@ import org.litespring.beans.factory.config.TypedStringValue;
 import org.litespring.beans.factory.exception.*;
 import org.litespring.beans.factory.BeanDefinitionRegistry;
 import org.litespring.beans.factory.support.GenericBeanDefinition;
+import org.litespring.context.annotation.ClassPathBeanDefinitionScanner;
 import org.litespring.core.io.Resource;
 import org.litespring.util.ClassUtils;
 import org.litespring.util.StringUtils;
@@ -50,6 +51,12 @@ public class XmlBeanDefinitionReader {
     public static final String CONSTRUCTOR_ARG_ELEMENT = "constructor-arg";
 
     public static final String TYPE_ATTRIBUTE = "type";
+
+    public static final String BEANS_NAMESPACE_URI = "http://www.springframework.org/schema/beans";
+
+    public static final String CONTEXT_NAMESPACE_URI = "http://www.springframework.org/schema/context";
+
+    public static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
 
     BeanDefinitionRegistry registry;
 
@@ -111,22 +118,15 @@ public class XmlBeanDefinitionReader {
 
             while (iter.hasNext()) {  // Get bean id and class name from XML
                 Element elem = iter.next();
-                String id = elem.attributeValue(ID_ATTRIBUTE);
-                String beanClassName = elem.attributeValue(CLASS_ATTRIBUTE);
-                BeanDefinition definition = new GenericBeanDefinition(id, beanClassName);
 
-                if (elem.attributeValue(SCOPE_ATTRIBUTE) != null) {
-                    definition.setScope(elem.attributeValue(SCOPE_ATTRIBUTE));
+                String namespaceUri = elem.getNamespaceURI();
+                if (this.isDefaultNamespace(namespaceUri)) {
+                    // regular bean
+                    parseDefaultElement(elem);
+                } else if (this.isContextNamespace(namespaceUri)) {
+                    // tag like <context:component-scan>
+                    parseComponentElement(elem);
                 }
-
-                // parse constructor args firstly
-                parseConstructorArgElements(elem, definition);
-
-                // parse the property tag secondly
-                parsePropertyElement(elem, definition);
-
-                // load definition to registry thirdly
-                this.registry.registerBeanDefinition(id, definition);
             }
         } catch (Exception e) {
             throw new BeanDefinitionStoreException("Parsing XML document failed", e);
@@ -139,6 +139,48 @@ public class XmlBeanDefinitionReader {
                 }
             }
         }
+    }
+
+    public boolean isDefaultNamespace(String namespaceUri) {
+        return (!StringUtils.hasLength(namespaceUri) || BEANS_NAMESPACE_URI.equals(namespaceUri));
+    }
+
+    public boolean isContextNamespace(String namespaceUri) {
+        return (!StringUtils.hasLength(namespaceUri) || CONTEXT_NAMESPACE_URI.equals(namespaceUri));
+    }
+
+    /**
+     * parse default element in the XML config file
+     *
+     * @param elem current element
+     */
+    public void parseDefaultElement(Element elem) {
+        String id = elem.attributeValue(ID_ATTRIBUTE);
+        String beanClassName = elem.attributeValue(CLASS_ATTRIBUTE);
+        BeanDefinition definition = new GenericBeanDefinition(id, beanClassName);
+
+        if (elem.attributeValue(SCOPE_ATTRIBUTE) != null) {
+            definition.setScope(elem.attributeValue(SCOPE_ATTRIBUTE));
+        }
+
+        // parse constructor args firstly
+        parseConstructorArgElements(elem, definition);
+
+        // parse the property tag secondly
+        parsePropertyElement(elem, definition);
+
+        // load definition to registry thirdly
+        this.registry.registerBeanDefinition(id, definition);
+    }
+
+    /**
+     * parse the package-scan attribute
+     * @param elem current element
+     */
+    public void parseComponentElement(Element elem) {
+        String basePackages = elem.attributeValue(BASE_PACKAGE_ATTRIBUTE);
+        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(registry);
+        scanner.doScan(basePackages);
     }
 
     /**

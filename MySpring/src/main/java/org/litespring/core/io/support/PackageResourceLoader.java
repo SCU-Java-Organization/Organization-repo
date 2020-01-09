@@ -65,7 +65,9 @@ public class PackageResourceLoader {
     }
 
     /**
-     * Test if the current root directory is available.
+     * Test if the current root directory is available,
+     * and if it's available, we'll call another method
+     * to retrieve files from the root directory.
      *
      * @param rootDir root directory
      * @return a set which contains files of the root directory

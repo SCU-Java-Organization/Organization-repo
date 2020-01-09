@@ -10,6 +10,7 @@ import org.litespring.core.type.classreading.SimpleMetadataReader;
 import org.litespring.stereotype.Component;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Description:
