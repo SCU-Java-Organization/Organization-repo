@@ -1,6 +1,6 @@
 package org.litespring.context;
 
-import org.litespring.beans.factory.config.ConfigurableBeanFactory;
+import org.litespring.beans.factory.BeanFactory;
 
 /**
  * Description: A wrapper interface
@@ -11,6 +11,6 @@ import org.litespring.beans.factory.config.ConfigurableBeanFactory;
  * date 2019/12/11
  * @see org.litespring.context.support.ClassPathXmlApplicationContext
  */
-public interface ApplicationContext extends ConfigurableBeanFactory {
+public interface ApplicationContext extends BeanFactory {
 
 }

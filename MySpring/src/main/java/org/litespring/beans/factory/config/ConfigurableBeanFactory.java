@@ -1,6 +1,6 @@
 package org.litespring.beans.factory.config;
 
-import org.litespring.beans.factory.BeanFactory;
+import java.util.List;
 
 /**
  * Description: A sub-interface of BeanFactory
@@ -12,11 +12,16 @@ import org.litespring.beans.factory.BeanFactory;
  * @author ShaoJiale
  * date 2019/12/12
  * @see org.litespring.util.ClassUtils
- * @see org.litespring.beans.factory.BeanFactory
+ * @see AutowireCapableBeanFactory
  * @see org.litespring.context.ApplicationContext
+ * @see org.litespring.beans.factory.support.DefaultBeanFactory
  */
-public interface ConfigurableBeanFactory extends BeanFactory {
+public interface ConfigurableBeanFactory extends AutowireCapableBeanFactory {
     void setBeanClassLoader(ClassLoader beanClassLoader);
 
     ClassLoader getBeanClassLoader();
+
+    void addBeanPostProcessor(BeanPostProcessor postProcessor);
+
+    List<BeanPostProcessor> getBeanPostProcessor();
 }

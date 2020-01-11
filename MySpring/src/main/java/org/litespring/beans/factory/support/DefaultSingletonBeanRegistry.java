@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @see DefaultBeanFactory
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
+
     private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(64);
 
     @Override

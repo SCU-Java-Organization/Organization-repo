@@ -3,7 +3,10 @@ package org.litespring.beans.factory.support;
 import org.apache.commons.beanutils.BeanUtils;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.factory.BeanDefinitionRegistry;
+import org.litespring.beans.factory.config.BeanPostProcessor;
 import org.litespring.beans.factory.config.ConfigurableBeanFactory;
+import org.litespring.beans.factory.config.DependencyDescriptor;
+import org.litespring.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.litespring.beans.factory.exception.*;
 import org.litespring.beans.BeanDefinition;
 import org.litespring.util.ClassUtils;
@@ -28,6 +31,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         implements ConfigurableBeanFactory, BeanDefinitionRegistry {
 
+    private List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
+
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
     private ClassLoader beanClassLoader;
@@ -36,6 +41,16 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     public DefaultBeanFactory() {
         singletonLock = new Object();
+    }
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor postProcessor) {
+        this.beanPostProcessors.add(postProcessor);
+    }
+
+    @Override
+    public List<BeanPostProcessor> getBeanPostProcessor() {
+        return this.beanPostProcessors;
     }
 
     @Override
@@ -142,6 +157,13 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
      * @see BeanDefinitionValueResolver
      */
     protected void populateBean(BeanDefinition bd, Object bean) {
+
+        for (BeanPostProcessor processor : this.getBeanPostProcessor()) {
+            if (processor instanceof InstantiationAwareBeanPostProcessor) {
+                ((InstantiationAwareBeanPostProcessor)processor).postProcessPropertyValues(bean, bd.getID());
+            }
+        }
+
         // get property value list
         List<PropertyValue> pvs = bd.getPropertyValues();
 
@@ -216,5 +238,31 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     @Override
     public ClassLoader getBeanClassLoader() {
         return this.beanClassLoader != null ? this.beanClassLoader : ClassUtils.getDefaultClassLoader();
+    }
+
+    @Override
+    public Object resolveDependency(DependencyDescriptor descriptor) {
+        Class<?> typeToMatch = descriptor.getDependencyType();
+
+        for (BeanDefinition bd : this.beanDefinitionMap.values()) {
+            // To make sure the bean has a Class
+            resolveBeanClass(bd);
+
+            Class<?> beanClass = bd.getBeanClass();
+            if (typeToMatch.isAssignableFrom(beanClass))
+                return this.getBean(bd.getID());
+        }
+
+        return null;
+    }
+
+    public void resolveBeanClass(BeanDefinition bd) {
+        if (bd.hasBeanClass())
+            return;
+        try {
+            bd.resolveBeanClass(this.getBeanClassLoader());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("cannot load class: " + bd.getBeanClassName());
+        }
     }
 }
