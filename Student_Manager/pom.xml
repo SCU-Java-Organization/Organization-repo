@@ -23,7 +23,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.1</version>
     </dependency>
 
     <!-- aopalliance包是AOP联盟的API包，里面包含了针对面向切面的接口，使项目支持aop。 -->
